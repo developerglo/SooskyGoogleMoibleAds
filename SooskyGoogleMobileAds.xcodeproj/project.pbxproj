@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		648AADE828CF1E1B001A768F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADE728CF1E1B001A768F /* BaseViewController.swift */; };
+		648AADFD28CF1E76001A768F /* WebBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADED28CF1E76001A768F /* WebBrowser.swift */; };
+		648AADFE28CF1E76001A768F /* SafariActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADEE28CF1E76001A768F /* SafariActivity.swift */; };
+		648AADFF28CF1E76001A768F /* WebBrowser.strings in Resources */ = {isa = PBXBuildFile; fileRef = 648AADF128CF1E76001A768F /* WebBrowser.strings */; };
+		648AAE0028CF1E76001A768F /* WebBrowser.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648AADF728CF1E76001A768F /* WebBrowser.xcassets */; };
+		648AAE0128CF1E76001A768F /* ToolbarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADF828CF1E76001A768F /* ToolbarAppearance.swift */; };
+		648AAE0228CF1E76001A768F /* WebBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADF928CF1E76001A768F /* WebBrowserViewController.swift */; };
+		648AAE0328CF1E76001A768F /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADFA28CF1E76001A768F /* NavigationBarAppearance.swift */; };
+		648AAE0428CF1E76001A768F /* InternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADFB28CF1E76001A768F /* InternationalControl.swift */; };
+		648AAE0528CF1E76001A768F /* WebBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADFC28CF1E76001A768F /* WebBrowserDelegate.swift */; };
+		648AAE0728CF1E92001A768F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE0628CF1E92001A768F /* Main.storyboard */; };
+		648AAE0928CF1EAC001A768F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE0828CF1EAC001A768F /* Assets.xcassets */; };
+		648AAE0B28CF1EE7001A768F /* SooskyAdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */; };
+		648AAE0D28CF1F39001A768F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0C28CF1F39001A768F /* AppDelegate.swift */; };
+		648AAE1128CF1FEA001A768F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0F28CF1FEA001A768F /* Reachability.swift */; };
+		648AAE1228CF1FEA001A768F /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */; };
+		648AAE1828CF2202001A768F /* AdsTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1628CF2202001A768F /* AdsTrackingViewController.swift */; };
+		648AAE1928CF2202001A768F /* AdsTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE1728CF2202001A768F /* AdsTrackingViewController.xib */; };
+		648AAE1B28CF22CA001A768F /* SplashLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */; };
+		648AAE1E28CF3594001A768F /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
+		86926445331B415A15FBA78D /* Pods_SooskyGoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCB8FF662C1F662757E67FB /* Pods_SooskyGoogleMobileAds.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4BCB8FF662C1F662757E67FB /* Pods_SooskyGoogleMobileAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SooskyGoogleMobileAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		648AADCF28CF1D86001A768F /* SooskyGoogleMobileAds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SooskyGoogleMobileAds.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		648AADE728CF1E1B001A768F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		648AADED28CF1E76001A768F /* WebBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowser.swift; sourceTree = "<group>"; };
+		648AADEE28CF1E76001A768F /* SafariActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariActivity.swift; sourceTree = "<group>"; };
+		648AADF228CF1E76001A768F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WebBrowser.strings"; sourceTree = "<group>"; };
+		648AADF328CF1E76001A768F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/WebBrowser.strings; sourceTree = "<group>"; };
+		648AADF428CF1E76001A768F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/WebBrowser.strings; sourceTree = "<group>"; };
+		648AADF528CF1E76001A768F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/WebBrowser.strings; sourceTree = "<group>"; };
+		648AADF628CF1E76001A768F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/WebBrowser.strings"; sourceTree = "<group>"; };
+		648AADF728CF1E76001A768F /* WebBrowser.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WebBrowser.xcassets; sourceTree = "<group>"; };
+		648AADF828CF1E76001A768F /* ToolbarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarAppearance.swift; sourceTree = "<group>"; };
+		648AADF928CF1E76001A768F /* WebBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowserViewController.swift; sourceTree = "<group>"; };
+		648AADFA28CF1E76001A768F /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
+		648AADFB28CF1E76001A768F /* InternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternationalControl.swift; sourceTree = "<group>"; };
+		648AADFC28CF1E76001A768F /* WebBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowserDelegate.swift; sourceTree = "<group>"; };
+		648AAE0628CF1E92001A768F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		648AAE0828CF1EAC001A768F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SooskyAdsVC.swift; sourceTree = "<group>"; };
+		648AAE0C28CF1F39001A768F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		648AAE0F28CF1FEA001A768F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
+		648AAE1328CF203E001A768F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		648AAE1628CF2202001A768F /* AdsTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsTrackingViewController.swift; sourceTree = "<group>"; };
+		648AAE1728CF2202001A768F /* AdsTrackingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdsTrackingViewController.xib; sourceTree = "<group>"; };
+		648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashLoadingVC.swift; sourceTree = "<group>"; };
+		648AAE1D28CF3594001A768F /* FunctionCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCommon.swift; sourceTree = "<group>"; };
+		A1B09C4D8C5001C3743FB07D /* Pods-SooskyGoogleMobileAds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SooskyGoogleMobileAds.debug.xcconfig"; path = "Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds.debug.xcconfig"; sourceTree = "<group>"; };
+		FEFE772A454BCA83D6A73B6B /* Pods-SooskyGoogleMobileAds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SooskyGoogleMobileAds.release.xcconfig"; path = "Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		648AADCC28CF1D86001A768F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86926445331B415A15FBA78D /* Pods_SooskyGoogleMobileAds.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		648AADC628CF1D86001A768F = {
+			isa = PBXGroup;
+			children = (
+				648AADD128CF1D86001A768F /* SooskyGoogleMobileAds */,
+				648AADD028CF1D86001A768F /* Products */,
+				BA3831EEFDD806C8669ECEE6 /* Pods */,
+				C2E5F51EC9A585A0D2FCBB27 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		648AADD028CF1D86001A768F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				648AADCF28CF1D86001A768F /* SooskyGoogleMobileAds.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		648AADD128CF1D86001A768F /* SooskyGoogleMobileAds */ = {
+			isa = PBXGroup;
+			children = (
+				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
+				648AAE0828CF1EAC001A768F /* Assets.xcassets */,
+				648AAE1328CF203E001A768F /* Info.plist */,
+				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
+				648AAE1528CF2202001A768F /* AdsTracking */,
+				648AADEB28CF1E68001A768F /* Libs */,
+				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
+				648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */,
+				648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */,
+				648AAE0628CF1E92001A768F /* Main.storyboard */,
+			);
+			path = SooskyGoogleMobileAds;
+			sourceTree = "<group>";
+		};
+		648AADEB28CF1E68001A768F /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				648AAE0E28CF1FD6001A768F /* Network */,
+				648AADEC28CF1E76001A768F /* WebBrowser */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		648AADEC28CF1E76001A768F /* WebBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				648AADED28CF1E76001A768F /* WebBrowser.swift */,
+				648AADEE28CF1E76001A768F /* SafariActivity.swift */,
+				648AADEF28CF1E76001A768F /* Resources */,
+				648AADF828CF1E76001A768F /* ToolbarAppearance.swift */,
+				648AADF928CF1E76001A768F /* WebBrowserViewController.swift */,
+				648AADFA28CF1E76001A768F /* NavigationBarAppearance.swift */,
+				648AADFB28CF1E76001A768F /* InternationalControl.swift */,
+				648AADFC28CF1E76001A768F /* WebBrowserDelegate.swift */,
+			);
+			path = WebBrowser;
+			sourceTree = "<group>";
+		};
+		648AADEF28CF1E76001A768F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				648AADF028CF1E76001A768F /* LocalizedStrings */,
+				648AADF728CF1E76001A768F /* WebBrowser.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		648AADF028CF1E76001A768F /* LocalizedStrings */ = {
+			isa = PBXGroup;
+			children = (
+				648AADF128CF1E76001A768F /* WebBrowser.strings */,
+			);
+			path = LocalizedStrings;
+			sourceTree = "<group>";
+		};
+		648AAE0E28CF1FD6001A768F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */,
+				648AAE0F28CF1FEA001A768F /* Reachability.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		648AAE1528CF2202001A768F /* AdsTracking */ = {
+			isa = PBXGroup;
+			children = (
+				648AAE1628CF2202001A768F /* AdsTrackingViewController.swift */,
+				648AAE1728CF2202001A768F /* AdsTrackingViewController.xib */,
+			);
+			path = AdsTracking;
+			sourceTree = "<group>";
+		};
+		BA3831EEFDD806C8669ECEE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1B09C4D8C5001C3743FB07D /* Pods-SooskyGoogleMobileAds.debug.xcconfig */,
+				FEFE772A454BCA83D6A73B6B /* Pods-SooskyGoogleMobileAds.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C2E5F51EC9A585A0D2FCBB27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BCB8FF662C1F662757E67FB /* Pods_SooskyGoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		648AADCE28CF1D86001A768F /* SooskyGoogleMobileAds */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 648AADE328CF1D86001A768F /* Build configuration list for PBXNativeTarget "SooskyGoogleMobileAds" */;
+			buildPhases = (
+				4A566E38DEFA18BF7915821F /* [CP] Check Pods Manifest.lock */,
+				648AADCB28CF1D86001A768F /* Sources */,
+				648AADCC28CF1D86001A768F /* Frameworks */,
+				648AADCD28CF1D86001A768F /* Resources */,
+				C40180F830E054EB5505CF2A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SooskyGoogleMobileAds;
+			productName = SooskyGoogleMobileAds;
+			productReference = 648AADCF28CF1D86001A768F /* SooskyGoogleMobileAds.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		648AADC728CF1D86001A768F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					648AADCE28CF1D86001A768F = {
+						CreatedOnToolsVersion = 13.4;
+						LastSwiftMigration = 1340;
+					};
+				};
+			};
+			buildConfigurationList = 648AADCA28CF1D86001A768F /* Build configuration list for PBXProject "SooskyGoogleMobileAds" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+				ja,
+				ko,
+				"zh-Hant",
+			);
+			mainGroup = 648AADC628CF1D86001A768F;
+			productRefGroup = 648AADD028CF1D86001A768F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				648AADCE28CF1D86001A768F /* SooskyGoogleMobileAds */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		648AADCD28CF1D86001A768F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				648AAE0728CF1E92001A768F /* Main.storyboard in Resources */,
+				648AADFF28CF1E76001A768F /* WebBrowser.strings in Resources */,
+				648AAE0928CF1EAC001A768F /* Assets.xcassets in Resources */,
+				648AAE1928CF2202001A768F /* AdsTrackingViewController.xib in Resources */,
+				648AAE0028CF1E76001A768F /* WebBrowser.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A566E38DEFA18BF7915821F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SooskyGoogleMobileAds-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C40180F830E054EB5505CF2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		648AADCB28CF1D86001A768F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				648AAE0D28CF1F39001A768F /* AppDelegate.swift in Sources */,
+				648AAE0328CF1E76001A768F /* NavigationBarAppearance.swift in Sources */,
+				648AAE1128CF1FEA001A768F /* Reachability.swift in Sources */,
+				648AAE1228CF1FEA001A768F /* NetworkActivityIndicatorManager.swift in Sources */,
+				648AAE1828CF2202001A768F /* AdsTrackingViewController.swift in Sources */,
+				648AAE0B28CF1EE7001A768F /* SooskyAdsVC.swift in Sources */,
+				648AAE0128CF1E76001A768F /* ToolbarAppearance.swift in Sources */,
+				648AAE0528CF1E76001A768F /* WebBrowserDelegate.swift in Sources */,
+				648AAE1E28CF3594001A768F /* FunctionCommon.swift in Sources */,
+				648AAE0228CF1E76001A768F /* WebBrowserViewController.swift in Sources */,
+				648AADE828CF1E1B001A768F /* BaseViewController.swift in Sources */,
+				648AAE1B28CF22CA001A768F /* SplashLoadingVC.swift in Sources */,
+				648AADFE28CF1E76001A768F /* SafariActivity.swift in Sources */,
+				648AAE0428CF1E76001A768F /* InternationalControl.swift in Sources */,
+				648AADFD28CF1E76001A768F /* WebBrowser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		648AADF128CF1E76001A768F /* WebBrowser.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				648AADF228CF1E76001A768F /* zh-Hans */,
+				648AADF328CF1E76001A768F /* ja */,
+				648AADF428CF1E76001A768F /* en */,
+				648AADF528CF1E76001A768F /* ko */,
+				648AADF628CF1E76001A768F /* zh-Hant */,
+			);
+			name = WebBrowser.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		648AADE128CF1D86001A768F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		648AADE228CF1D86001A768F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		648AADE428CF1D86001A768F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1B09C4D8C5001C3743FB07D /* Pods-SooskyGoogleMobileAds.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SooskyGoogleMobileAds/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoogleMobileAds;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = soosky.co.GoogleMobileAds;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		648AADE528CF1D86001A768F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEFE772A454BCA83D6A73B6B /* Pods-SooskyGoogleMobileAds.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SooskyGoogleMobileAds/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoogleMobileAds;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = soosky.co.GoogleMobileAds;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		648AADCA28CF1D86001A768F /* Build configuration list for PBXProject "SooskyGoogleMobileAds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				648AADE128CF1D86001A768F /* Debug */,
+				648AADE228CF1D86001A768F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		648AADE328CF1D86001A768F /* Build configuration list for PBXNativeTarget "SooskyGoogleMobileAds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				648AADE428CF1D86001A768F /* Debug */,
+				648AADE528CF1D86001A768F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 648AADC728CF1D86001A768F /* Project object */;
+}

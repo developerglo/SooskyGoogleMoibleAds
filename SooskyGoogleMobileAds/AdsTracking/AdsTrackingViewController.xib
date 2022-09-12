@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdsTrackingViewController" customModule="SooskyGoogleMobileAds" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adstracking_imagetext" translatesAutoresizingMaskIntoConstraints="NO" id="BwK-iW-0g1">
+                    <rect key="frame" x="20" y="44" width="350" height="634"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTq-yr-spQ">
+                    <rect key="frame" x="180" y="760" width="30" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gzL-qX-aCz"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="btnDontAllowClick:" destination="-1" eventType="touchUpInside" id="2Cz-Nm-M5Y"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWp-Wy-wbn">
+                    <rect key="frame" x="24" y="698" width="342" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ZWp-Wy-wbn" secondAttribute="height" multiplier="342:62" id="6kw-ha-3cR"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="adstracking_btnallow"/>
+                    <connections>
+                        <action selector="btnAllowClick:" destination="-1" eventType="touchUpInside" id="clL-6Y-7b3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xTq-yr-spQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4ze-fU-m8e"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BwK-iW-0g1" secondAttribute="trailing" constant="20" id="6Q6-sk-JSo"/>
+                <constraint firstItem="ZWp-Wy-wbn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Igd-Wa-YU8"/>
+                <constraint firstItem="ZWp-Wy-wbn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0734597" id="JNp-gO-6uC"/>
+                <constraint firstItem="BwK-iW-0g1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QtL-3c-Jj4"/>
+                <constraint firstItem="xTq-yr-spQ" firstAttribute="top" secondItem="ZWp-Wy-wbn" secondAttribute="bottom" id="WKx-sx-cCc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xTq-yr-spQ" secondAttribute="bottom" id="YaZ-pg-8ar"/>
+                <constraint firstItem="ZWp-Wy-wbn" firstAttribute="top" secondItem="BwK-iW-0g1" secondAttribute="bottom" constant="20" id="nN5-w1-GjW"/>
+                <constraint firstItem="BwK-iW-0g1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oEj-Mu-jDZ"/>
+            </constraints>
+            <point key="canvasLocation" x="130.40000000000001" y="111.57635467980296"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="adstracking_btnallow" width="345" height="54"/>
+        <image name="adstracking_imagetext" width="375" height="506"/>
+    </resources>
+</document>
