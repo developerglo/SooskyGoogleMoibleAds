@@ -168,14 +168,18 @@ extension BaseViewController
         self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
             
         } actionHandler: { yes in
-            NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
-            
-            self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
-                if str == "loadVideo"
-                {
-                    if self.isLoadVideoFail {
-                        self.closeAdsReward()
-                    }
+            self.showLoadingRewardAds()
+        }
+    }
+    
+    func showLoadingRewardAds(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
+        
+        self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
+            if str == "loadVideo"
+            {
+                if self.isLoadVideoFail {
+                    self.closeAdsReward()
                 }
             }
         }
@@ -237,14 +241,18 @@ extension BaseViewController
         self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
             
         } actionHandler: { yes in
-            NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward10s), name: .SHOW_ADS, object: nil)
-            
-            self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
-                if str == "loadVideo"
-                {
-                    if self.isLoadVideoFail {
-                        self.closeAdsReward10s()
-                    }
+            self.showLoadingRewardAds10s()
+        }
+    }
+    
+    func showLoadingRewardAds10s() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward10s), name: .SHOW_ADS, object: nil)
+        
+        self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
+            if str == "loadVideo"
+            {
+                if self.isLoadVideoFail {
+                    self.closeAdsReward10s()
                 }
             }
         }
@@ -295,4 +303,3 @@ extension BaseViewController
         showAdsReward10s()
     }
 }
-
