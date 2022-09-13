@@ -136,7 +136,7 @@ extension BaseViewController : GADFullScreenContentDelegate
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         if let _ = ad as? GADInterstitialAd {
             closeAdsFull()
-        }else if let _ = ad as? GADInterstitialAd {
+        }else if let _ = ad as? GADRewardedAd {
             closeAdsReward()
         }else{
             closeAdsReward10s()
