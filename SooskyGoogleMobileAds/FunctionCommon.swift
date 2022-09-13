@@ -577,6 +577,24 @@ func createAndLoadInterstitial() -> Void {
     }
 }
 
+func showAdsInterstitial(_ controller : UIViewController) -> Bool
+{
+    let storage = UserDefaults.standard
+    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
+    {
+        return false
+    }
+    
+    if(fullAds == nil)
+    {
+        createAndLoadInterstitial()
+        return false
+    }
+    
+    fullAds.present(fromRootViewController: controller)
+    return true
+}
+
 var rewardAds : GADRewardedAd!
 func createAndLoadRewardedAds() -> Void {
     let storage = UserDefaults.standard
