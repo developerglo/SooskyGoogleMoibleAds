@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
                 case .authorized:
                     // Authorized
                     let idfa = ASIdentifierManager.shared().advertisingIdentifier
-                    print("[Soosky] idfa \(idfa)")
+                    print("[DEBUG] idfa \(idfa)")
 //                        self.label.text = idfa.uuidString
                 case .denied,
                         .notDetermined,
@@ -177,7 +177,7 @@ extension AppDelegate{
                           orientation: UIInterfaceOrientation.portrait,
                           completionHandler: { (appOpenAdIn, error) in
             guard error == nil else {
-                print("[Soosky] load Open Ads error : \(error?.localizedDescription)")
+                print("[DEBUG] load Open Ads error : \(error?.localizedDescription)")
                 return
             }
             self.appOpenAd = appOpenAdIn

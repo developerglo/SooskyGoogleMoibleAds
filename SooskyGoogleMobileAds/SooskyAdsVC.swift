@@ -18,17 +18,17 @@ class SooskyAdsVC: BaseViewController {
     
     //Tắt quảng cáo ads full
     override func turnOffAdsFull() {
-        print("[Soosky] Đóng quảng cáo full")
+        print("[DEBUG] Đóng quảng cáo full")
     }
     
     //Tắt quảng cáo ads Reward và Reward 10s có thưởng
     override func haveReward() {
-        print("[Soosky] Đóng quảng cáo khi có thưởng")
+        print("[DEBUG] Đóng quảng cáo khi có thưởng")
     }
     
     //Tắt quảng cáo ads Reward và Reward 10s không thưởng
     override func dontHaveReward() {
-        print("[Soosky] Đóng quảng cáo khi không thưởng")
+        print("[DEBUG] Đóng quảng cáo khi không thưởng")
     }
     
     override func viewDidLoad() {

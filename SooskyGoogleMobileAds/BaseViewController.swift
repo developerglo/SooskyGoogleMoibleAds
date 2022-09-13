@@ -183,7 +183,7 @@ extension BaseViewController
         
         rewardAds.fullScreenContentDelegate = self
         rewardAds.present(fromRootViewController: self) {
-            print("[Soosky] Reward Ads received with currency: \(rewardAds.adReward.type), amount \(rewardAds.adReward.amount).")
+            print("[DEBUG] Reward Ads received with currency: \(rewardAds.adReward.type), amount \(rewardAds.adReward.amount).")
             self.isHaveRewarded = true
         }
     }
@@ -256,7 +256,7 @@ extension BaseViewController
         
         rewardAds10.fullScreenContentDelegate = self
         rewardAds10.present(fromRootViewController: self) {
-            print("[Soosky] Reward Ads 10s received with currency: \(rewardAds10.adReward.type), amount \(rewardAds10.adReward.amount).")
+            print("[DEBUG] Reward Ads 10s received with currency: \(rewardAds10.adReward.type), amount \(rewardAds10.adReward.amount).")
             self.isHaveRewarded = true
         }
     }

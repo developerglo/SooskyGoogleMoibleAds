@@ -552,7 +552,7 @@ func createAndLoadRewardInterstitial() -> Void {
         let request = GADRequest()
         GADRewardedInterstitialAd.load(withAdUnitID: Constants.VIDEO_FULL_ID, request: request) { (rewardFull, error) in
             guard error == nil else {
-                print("[Soosky] load ads Full Reward error : \(error?.localizedDescription)")
+                print("[DEBUG] load ads Full Reward error : \(error?.localizedDescription)")
                 return
             }
             fullRewardAds = rewardFull
@@ -569,7 +569,7 @@ func createAndLoadInterstitial() -> Void {
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID, request: request) { ads, error in
             guard error == nil else {
-                print("[Soosky] load ads Full error : \(error?.localizedDescription)")
+                print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
                 return
             }
             fullAds = ads
@@ -604,7 +604,7 @@ func createAndLoadRewardedAds() -> Void {
         let request = GADRequest()
         GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID, request: GADRequest()) { ads, error in
             guard error == nil else {
-                print("[Soosky] load ads Reward error : \(error?.localizedDescription)")
+                print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
                 return
             }
             rewardAds = ads
