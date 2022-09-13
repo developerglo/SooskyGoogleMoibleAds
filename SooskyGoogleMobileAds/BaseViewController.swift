@@ -125,7 +125,7 @@ extension BaseViewController : GADFullScreenContentDelegate
     @objc func ShowAdsFull()
     {
         DispatchQueue.main.async{
-            if !self.showAdsInterstitial(self)
+            if !showAdsInterstitial(self)
             {
                 self.closeAdsFull()
             }
