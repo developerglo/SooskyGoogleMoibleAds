@@ -171,6 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
 //Quảng cáo Open Ads
 extension AppDelegate{
     func requestAppOpenAd() {
+        self.appOpenAd = nil
         let request = GADRequest()
         GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID,
                           request: request,
@@ -194,11 +195,9 @@ extension AppDelegate{
         }
         
         //Khi ở màn hình sub thì ko hiện ads
-        if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController, !isOpenSubs {
-            //Quảng cáo open ads sẽ hiển thị cứ 4 tiếng 1 lần
-            if wasLoadTimeLessThanNHoursAgo(thresholdN: 4){
-                gOpenAd.present(fromRootViewController: rwc)
-            }
+        //Quảng cáo open ads sẽ hiển thị cứ 4 tiếng 1 lần
+        if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController, !isOpenSubs, wasLoadTimeLessThanNHoursAgo(thresholdN: 4) {
+            gOpenAd.present(fromRootViewController: rwc)
         } else {
             if self.appOpenAd == nil{
                 self.requestAppOpenAd()
@@ -219,6 +218,6 @@ extension AppDelegate{
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        self.appOpenAd = nil
+        
     }
 }
