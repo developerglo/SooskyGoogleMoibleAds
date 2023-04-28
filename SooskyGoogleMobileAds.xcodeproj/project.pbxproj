@@ -19,7 +19,7 @@
 		648AAE0528CF1E76001A768F /* WebBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADFC28CF1E76001A768F /* WebBrowserDelegate.swift */; };
 		648AAE0728CF1E92001A768F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE0628CF1E92001A768F /* Main.storyboard */; };
 		648AAE0928CF1EAC001A768F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE0828CF1EAC001A768F /* Assets.xcassets */; };
-		648AAE0B28CF1EE7001A768F /* SooskyAdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */; };
+		648AAE0B28CF1EE7001A768F /* SooskyTestAdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */; };
 		648AAE0D28CF1F39001A768F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0C28CF1F39001A768F /* AppDelegate.swift */; };
 		648AAE1128CF1FEA001A768F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0F28CF1FEA001A768F /* Reachability.swift */; };
 		648AAE1228CF1FEA001A768F /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */; };
@@ -49,7 +49,7 @@
 		648AADFC28CF1E76001A768F /* WebBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebBrowserDelegate.swift; sourceTree = "<group>"; };
 		648AAE0628CF1E92001A768F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		648AAE0828CF1EAC001A768F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SooskyAdsVC.swift; sourceTree = "<group>"; };
+		648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SooskyTestAdsVC.swift; sourceTree = "<group>"; };
 		648AAE0C28CF1F39001A768F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648AAE0F28CF1FEA001A768F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
@@ -95,27 +95,27 @@
 		648AADD128CF1D86001A768F /* SooskyGoogleMobileAds */ = {
 			isa = PBXGroup;
 			children = (
-				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
 				648AAE0828CF1EAC001A768F /* Assets.xcassets */,
 				648AAE1328CF203E001A768F /* Info.plist */,
-				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				648AAE1528CF2202001A768F /* AdsTracking */,
-				648AADEB28CF1E68001A768F /* Libs */,
+				648AADEB28CF1E68001A768F /* GMA */,
 				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
+				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
 				648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */,
-				648AAE0A28CF1EE7001A768F /* SooskyAdsVC.swift */,
+				648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */,
 				648AAE0628CF1E92001A768F /* Main.storyboard */,
 			);
 			path = SooskyGoogleMobileAds;
 			sourceTree = "<group>";
 		};
-		648AADEB28CF1E68001A768F /* Libs */ = {
+		648AADEB28CF1E68001A768F /* GMA */ = {
 			isa = PBXGroup;
 			children = (
+				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				648AAE0E28CF1FD6001A768F /* Network */,
 				648AADEC28CF1E76001A768F /* WebBrowser */,
 			);
-			path = Libs;
+			path = GMA;
 			sourceTree = "<group>";
 		};
 		648AADEC28CF1E76001A768F /* WebBrowser */ = {
@@ -312,7 +312,7 @@
 				648AAE1128CF1FEA001A768F /* Reachability.swift in Sources */,
 				648AAE1228CF1FEA001A768F /* NetworkActivityIndicatorManager.swift in Sources */,
 				648AAE1828CF2202001A768F /* AdsTrackingViewController.swift in Sources */,
-				648AAE0B28CF1EE7001A768F /* SooskyAdsVC.swift in Sources */,
+				648AAE0B28CF1EE7001A768F /* SooskyTestAdsVC.swift in Sources */,
 				648AAE0128CF1E76001A768F /* ToolbarAppearance.swift in Sources */,
 				648AAE0528CF1E76001A768F /* WebBrowserDelegate.swift in Sources */,
 				648AAE1E28CF3594001A768F /* FunctionCommon.swift in Sources */,
@@ -465,12 +465,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 479R87JHRL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SooskyGoogleMobileAds/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GoogleMobileAds;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -485,7 +486,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = soosky.co.GoogleMobileAds;
+				PRODUCT_BUNDLE_IDENTIFIER = test.co.GoogleMobileAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -504,12 +505,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 479R87JHRL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SooskyGoogleMobileAds/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GoogleMobileAds;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -524,7 +526,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = soosky.co.GoogleMobileAds;
+				PRODUCT_BUNDLE_IDENTIFIER = test.co.GoogleMobileAds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

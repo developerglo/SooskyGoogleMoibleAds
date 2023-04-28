@@ -1,5 +1,5 @@
 //
-//  SooskyAdsVC.swift
+//  SooskyTestAdsVC.swift
 //  SooskyGoogleMobileAds
 //
 //  Created by Soosky CTO on 12/09/2022.
@@ -11,7 +11,7 @@ import GoogleMobileAds
 //Khởi tạo biến count Ads Full  ở ngoài class
 var countFullAdsSoosky : Int = 0
 
-class SooskyAdsVC: BaseViewController {
+class SooskyTestAdsVC: BaseViewController {
 
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var heightConstraintBannerView: NSLayoutConstraint!

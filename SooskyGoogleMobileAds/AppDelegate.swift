@@ -7,7 +7,6 @@
 
 import UIKit
 import GoogleMobileAds
-import Firebase
 import AppTrackingTransparency
 import AdSupport
 
@@ -22,27 +21,23 @@ struct defaultsKeys {
 
 struct Constants {
     static let App_Specific_Shared_Secret = ""
-    static let BANNER_ID =
-//            ""
-        "ca-app-pub-3940256099942544/2934735716"
-    static let FULL_ID =
-//            ""
-        "ca-app-pub-3940256099942544/4411468910"
-    static let VIDEO_FULL_ID =
-//    ""
-    "ca-app-pub-3940256099942544/6978759866"
-    static let VIDEO_ID =
-//            ""
-        "ca-app-pub-3940256099942544/5224354917"
-    static let NATIVE_ID =
-//                ""
-        "ca-app-pub-3940256099942544/2247696110"
-    static let OPEN_ID =
-//    ""
-    "ca-app-pub-3940256099942544/3419835294"
-    static let APP_ID =
-//            ""
-        "ca-app-pub-3940256099942544~1458002511"
+#if DEBUG
+static let BANNER_ID     = "ca-app-pub-3940256099942544/2934735716"
+static let FULL_ID       = "ca-app-pub-3940256099942544/4411468910"
+static let VIDEO_FULL_ID = "ca-app-pub-3940256099942544/8691691433"
+static let VIDEO_ID      = "ca-app-pub-3940256099942544/5224354917"
+static let NATIVE_ID     = "ca-app-pub-3940256099942544/2247696110"
+static let OPEN_ID       = "ca-app-pub-3940256099942544/3419835294"
+static let APP_ID        = "ca-app-pub-3940256099942544~1458002511"
+#else
+static let BANNER_ID     = ""
+static let FULL_ID       = ""
+static let VIDEO_FULL_ID = ""
+static let VIDEO_ID      = ""
+static let NATIVE_ID     = ""
+static let OPEN_ID       = ""
+static let APP_ID        = ""
+#endif
 }
 
 var isOpenSubs : Bool = false
@@ -51,10 +46,13 @@ var isCheckTracking : Bool = false
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDelegate {
     
+    var windowSplash: UIWindow?
     var window: UIWindow?
-    var extWindow : UIWindow?
     var appOpenAd: GADAppOpenAd?
     var loadTime = Date()
+    
+    var isCheckSub : Bool = false
+    var isSetUpAdsSuccess : Bool = false
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Check Network Connection
@@ -76,9 +74,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
             }
         }
         
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
         self.checkAppTracking()
+        if #available(iOS 14, *) {
+            if isCheckTracking{
+                self.setUpAds()
+            }
+        } else {
+            self.setUpAds()
+        }
+        
+        self.checkSubWhenReturnAppAgain()
         return true
+    }
+    
+    func loadAds() {
+        if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil{
+            return
+        }
+        
+        //Dùng Ads nào thì request Ads đó, còn lại comment
+        if fullAds == nil{
+            createAndLoadInterstitial()
+        }
+        
+//        if fullRewardAds == nil{
+//            createAndLoadInterstitial()
+//        }
+        
+        if rewardAds == nil{
+            createAndLoadRewardedAds()
+        }
+    }
+    
+    func setUpAds(){
+        GADMobileAds.sharedInstance().start(completionHandler: {[weak self] status in
+            guard let `self` = self else{return}
+            self.isSetUpAdsSuccess = true
+            self.loadAds()
+            self.tryToPresentAd()
+        })
+    }
+    
+    func checkSubWhenReturnAppAgain(){
+        isCheckSub = true
+        
+        if self.windowSplash == nil{
+            self.windowSplash = UIWindow(frame: UIScreen.main.bounds)
+        }
+        
+        windowSplash?.frame = UIScreen.main.bounds
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let initialViewController = storyBoard.instantiateViewController(withIdentifier: "SplashLoadingVC")
+        self.windowSplash?.rootViewController = initialViewController
+        self.windowSplash?.makeKeyAndVisible()
     }
     
     @available(iOS 14, *)
@@ -86,21 +134,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
             DispatchQueue.main.async {
                 self.checkAppTracking()
+                self.setUpAds()
                 completion(status)
-                
-                switch status {
-                case .authorized:
-                    // Authorized
-                    let idfa = ASIdentifierManager.shared().advertisingIdentifier
-                    print("[DEBUG] idfa \(idfa)")
-//                        self.label.text = idfa.uuidString
-                case .denied,
-                        .notDetermined,
-                        .restricted:
-                    break
-                @unknown default:
-                    break
-                }
             }
         })
     }
@@ -145,18 +180,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
     }
     
     func configVC() {
+        isCheckSub = false
+        
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let nameControllerShow = "SooskyAdsVC"
+        let nameControllerShow = "SooskyTestAdsVC"
         
         if window == nil {
             window = UIWindow(frame: UIScreen.main.bounds)
-            return
+        }
+        
+        windowSplash?.frame = CGRect.zero
+        
+        if self.isSetUpAdsSuccess{
+            self.loadAds()
         }
         
         if isCheckTracking{
+            isOpenSubs = false
             let vc = storyBoard.instantiateViewController(withIdentifier: nameControllerShow)
             window?.rootViewController = vc
         }else{
+            isOpenSubs = true
             window?.rootViewController = AdsTrackingViewController()
         }
         
@@ -193,7 +237,7 @@ extension AppDelegate{
         {
             return
         }
-        
+
         //Khi ở màn hình sub thì ko hiện ads
         //Quảng cáo open ads sẽ hiển thị cứ 4 tiếng 1 lần
         if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController, !isOpenSubs, wasLoadTimeLessThanNHoursAgo(thresholdN: 4) {
@@ -206,7 +250,9 @@ extension AppDelegate{
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        self.tryToPresentAd()
+        if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil && !isOpenSubs && !isCheckSub{
+            self.tryToPresentAd()
+        }
     }
 
     func wasLoadTimeLessThanNHoursAgo(thresholdN: Int) -> Bool {

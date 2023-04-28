@@ -12,10 +12,6 @@ class SplashLoadingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createAndLoadInterstitial()
-        createAndLoadRewardInterstitial()
-        createAndLoadRewardedAds()
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
             self.configVC()
