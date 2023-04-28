@@ -111,7 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
             guard let `self` = self else{return}
             self.isSetUpAdsSuccess = true
             self.loadAds()
-            self.tryToPresentAd()
+            if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil{
+                self.tryToPresentAd()
+            }
         })
     }
     
@@ -232,12 +234,6 @@ extension AppDelegate{
     }
 
     func tryToPresentAd() {
-        let storage = UserDefaults.standard
-        if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
-        {
-            return
-        }
-
         //Khi ở màn hình sub thì ko hiện ads
         //Quảng cáo open ads sẽ hiển thị cứ 4 tiếng 1 lần
         if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController, !isOpenSubs, wasLoadTimeLessThanNHoursAgo(thresholdN: 4) {
