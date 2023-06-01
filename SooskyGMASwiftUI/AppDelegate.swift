@@ -9,6 +9,7 @@ import UIKit
 import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
+import SwiftUI
 
 struct defaultsKeys {
     static let KEY_FIRST_OPEN_APP = "KEY_FIRST_OPEN_APP"
@@ -43,7 +44,7 @@ static let APP_ID        = ""
 var isOpenSubs : Bool = false
 var isCheckTracking : Bool = false
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDelegate {
     
     var windowSplash: UIWindow?
@@ -97,9 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
             createAndLoadInterstitial()
         }
         
-//        if fullRewardAds == nil{
-//            createAndLoadInterstitial()
-//        }
+        if fullRewardAds == nil{
+            createAndLoadInterstitial()
+        }
         
         if rewardAds == nil{
             createAndLoadRewardedAds()
@@ -182,7 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
     func configVC() {
         isCheckSub = false
         
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         let nameControllerShow = "SooskyTestAdsVC"
         
         if window == nil {
@@ -197,8 +197,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
         
         if isCheckTracking{
             isOpenSubs = false
-            let vc = storyBoard.instantiateViewController(withIdentifier: nameControllerShow)
-            window?.rootViewController = vc
+            let tabbar = MenuView().navigationViewStyle(StackNavigationViewStyle())
+            let tabbarVC = UIHostingController(rootView: tabbar)
+            self.window?.rootViewController = tabbarVC
+            self.window?.makeKeyAndVisible()
         }else{
             isOpenSubs = true
             window?.rootViewController = AdsTrackingViewController()

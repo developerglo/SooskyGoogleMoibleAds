@@ -119,7 +119,7 @@ extension UIViewController {
     
     func getParentView() -> UIView{
            var parentView : UIView
-           if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+           if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
            {
                parentView = window
            }
@@ -153,7 +153,7 @@ extension UIViewController {
     func hideActivityIndicatorys()
     {
         var parentView : UIView
-        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
         {
             parentView = window
         }
@@ -175,7 +175,7 @@ extension UIViewController {
     func showActivityIndicatory()
     {
         var parentView : UIView
-        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
         {
             parentView = window
         }
@@ -214,7 +214,7 @@ extension UIViewController {
     func showActivityIndicatoryTitle() -> (UILabel, UIProgressView)
     {
         var parentView : UIView
-        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
         {
             parentView = window
         }
@@ -272,7 +272,7 @@ extension UIViewController {
     func showActivityIndicatoryTitle(title : String)
     {
         var parentView : UIView
-        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
         {
             parentView = window
         }
@@ -368,7 +368,7 @@ extension UIViewController {
         countTimerShowAds = 1
         
         var parentView : UIView
-        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first ?? UIApplication.shared.keyWindow
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
         {
             parentView = window
         }
