@@ -49,7 +49,7 @@ extension BaseViewController : GADFullScreenContentDelegate
     func closeAdsFull()
     {
         NotificationCenter.default.removeObserver(self, name: .SHOW_ADS, object: nil)
-        createAndLoadInterstitial()
+        
         DispatchQueue.main.async {[weak self] in
             guard let `self` = self else {return}
             self.turnOffAdsFull()
@@ -135,11 +135,25 @@ extension BaseViewController : GADFullScreenContentDelegate
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         if let _ = ad as? GADInterstitialAd {
+            createAndLoadInterstitial()
             closeAdsFull()
         }else if let _ = ad as? GADRewardedAd {
+            createAndLoadRewardedAds()
             closeAdsReward()
         }else{
+            createAndLoadRewardInterstitial()
             closeAdsReward10s()
+        }
+    }
+    
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        self.isLoadVideoFail = true
+        if let _ = ad as? GADInterstitialAd {
+            fullAds = nil
+        }else if let _ = ad as? GADRewardedAd {
+            rewardAds = nil
+        }else{
+            fullRewardAds = nil
         }
     }
 }
@@ -191,7 +205,6 @@ extension BaseViewController
     
     fileprivate func closeAdsReward() {
         NotificationCenter.default.removeObserver(self, name: .SHOW_ADS, object: nil)
-        createAndLoadRewardedAds()
         
         self.isLoadVideoFail = false
         DispatchQueue.main.async {[weak self] in
@@ -206,11 +219,7 @@ extension BaseViewController
             }
         }
     }
-    
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        self.isLoadVideoFail = true
-    }
-    
+
     @objc func ShowAdsReward()
     {
         showAdsReward()
@@ -264,8 +273,7 @@ extension BaseViewController
     
     fileprivate func closeAdsReward10s() {
         NotificationCenter.default.removeObserver(self, name: .SHOW_ADS, object: nil)
-        createAndLoadRewardInterstitial()
-        
+
         self.isLoadVideoFail = false
         DispatchQueue.main.async {[weak self] in
             guard let `self` = self else {return}
