@@ -595,6 +595,7 @@ func showAdsInterstitial(_ controller : UIViewController) -> Bool
     return true
 }
 
+var countTierRewardAds = 0
 var rewardAds : GADRewardedAd!
 func createAndLoadRewardedAds() -> Void {
     let storage = UserDefaults.standard
@@ -602,12 +603,18 @@ func createAndLoadRewardedAds() -> Void {
     {
         if !Reachability.isConnectedToNetwork() {return}
         let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID, request: GADRequest()) { ads, error in
+        GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID[countTierRewardAds], request: GADRequest()) { ads, error in
             guard error == nil else {
                 print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
                 return
             }
             rewardAds = ads
         }
+    }
+    
+    if countTierRewardAds >= Constants.VIDEO_ID.count - 1{
+        countTierRewardAds = 0
+    }else{
+        countTierRewardAds += 1
     }
 }

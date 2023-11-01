@@ -138,7 +138,7 @@ extension BaseViewController : GADFullScreenContentDelegate
             createAndLoadInterstitial()
             closeAdsFull()
         }else if let _ = ad as? GADRewardedAd {
-            createAndLoadRewardedAds()
+            rewardAds = nil
             closeAdsReward()
         }else{
             createAndLoadRewardInterstitial()
@@ -169,15 +169,83 @@ extension BaseViewController
     }
     
     func showLoadingRewardAds(){
+        createAndLoadRewardedAds()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
         
-        self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
-            if str == "loadVideo"
-            {
-                if self.isLoadVideoFail {
-                    self.closeAdsReward()
-                }
-            }
+        enableAndDisableNaviAndTabbar(isEnable: false)
+        
+        countTimerShowAds = 5
+        
+        var parentView : UIView
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
+        {
+            parentView = window
+        }
+        else if let supperview = self.view.superview
+        {
+            parentView = supperview
+        }
+        else
+        {
+            parentView = self.view
+        }
+        
+        let containerView : UIView = UIView()
+        containerView.frame = parentView.bounds
+        containerView.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
+        
+        let loadingView: UIView = UIView()
+        loadingView.frame = CGRect.init(x: ((containerView.frame.width - 150) / 2), y: ((containerView.frame.height / 2 - 150)), width: 150, height: 150)
+        loadingView.center = containerView.center
+        loadingView.backgroundColor = UIColor.init(red: 68/255, green: 68/255, blue: 68/255, alpha: 0.7)
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        
+        let textDes = UILabel.init(frame: CGRect(x : 0, y : 0, width : 150, height: 50))
+        textDes.textColor = UIColor.white
+        textDes.font = UIFont(name:"SegoeUI", size: 15.0)
+        textDes.textAlignment = .center
+        textDes.numberOfLines = 0
+        textDes.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2 + 45)
+        textDes.text = "Loading Ads..."
+        loadingView.addSubview(textDes)
+        
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        actInd.style =
+            UIActivityIndicatorView.Style.whiteLarge
+        actInd.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        loadingView.addSubview(actInd)
+        containerView.addSubview(loadingView)
+        
+        parentView.addSubview(containerView)
+        
+        let array : [Any] = [textDes, containerView, Notification.Name.SHOW_ADS]
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerReward), userInfo: array, repeats: true)
+        
+        actInd.startAnimating()
+    }
+    
+    @objc func updateTimerReward(timer: Timer)
+    {
+        let array : [Any] = timer.userInfo as! [Any]
+        countTimerShowAds -= 1
+        let txLabel = array[0] as! UILabel
+        txLabel.text = "Loading Ads..."
+        
+        if rewardAds != nil || countTimerShowAds <= 0
+        {
+            timer.invalidate()
+            
+            enableAndDisableNaviAndTabbar(isEnable: true)
+            
+            let containerView = array[1] as! UIView
+            containerView.removeFromSuperview()
+            let posAdsFull = array[2] as! Notification.Name
+            NotificationCenter.default.post(name: posAdsFull, object: nil)
+            
         }
     }
     
@@ -191,7 +259,7 @@ extension BaseViewController
         }
         
         guard let rewardAds = rewardAds else{
-            createAndLoadRewardedAds()
+            closeAdsReward()
             return
         }
         

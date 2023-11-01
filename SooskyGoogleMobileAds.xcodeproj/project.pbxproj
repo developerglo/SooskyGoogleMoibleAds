@@ -28,6 +28,7 @@
 		648AAE1928CF2202001A768F /* AdsTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE1728CF2202001A768F /* AdsTrackingViewController.xib */; };
 		648AAE1B28CF22CA001A768F /* SplashLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */; };
 		648AAE1E28CF3594001A768F /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
+		648E46B22AF2B81C00FE2234 /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
 		64B405C32A285C1900B45673 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B405C22A285C1900B45673 /* Preview Assets.xcassets */; };
 		64B405DC2A285C7700B45673 /* BannerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B405CB2A285C7700B45673 /* BannerContentView.swift */; };
 		64B405DD2A285C7700B45673 /* RewardedInterstitialContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B405CD2A285C7700B45673 /* RewardedInterstitialContentView.swift */; };
@@ -37,7 +38,6 @@
 		64B405E32A285C7700B45673 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B405D52A285C7700B45673 /* MenuView.swift */; };
 		64B405E42A285C7700B45673 /* RewardedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B405D72A285C7700B45673 /* RewardedContentView.swift */; };
 		64B405E52A285C7700B45673 /* InterstitialContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B405D92A285C7700B45673 /* InterstitialContentView.swift */; };
-		64B405E72A285CF100B45673 /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
 		64B405E82A285CF500B45673 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE0F28CF1FEA001A768F /* Reachability.swift */; };
 		64B405E92A285CF500B45673 /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1028CF1FEA001A768F /* NetworkActivityIndicatorManager.swift */; };
 		64B405EA2A285D0300B45673 /* WebBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADF928CF1E76001A768F /* WebBrowserViewController.swift */; };
@@ -153,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				648AAE1328CF203E001A768F /* Info.plist */,
+				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
 				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
 				648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */,
@@ -165,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				648AAE0828CF1EAC001A768F /* Assets.xcassets */,
-				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				64B405FB2A2860B300B45673 /* SplashVC */,
 				648AAE1528CF2202001A768F /* AdsTracking */,
 				648AAE0E28CF1FD6001A768F /* Network */,
@@ -553,7 +553,6 @@
 				64B405E52A285C7700B45673 /* InterstitialContentView.swift in Sources */,
 				64B405EA2A285D0300B45673 /* WebBrowserViewController.swift in Sources */,
 				64B405F82A285EB500B45673 /* BaseViewController.swift in Sources */,
-				64B405E72A285CF100B45673 /* FunctionCommon.swift in Sources */,
 				64B405E42A285C7700B45673 /* RewardedContentView.swift in Sources */,
 				64B405E22A285C7700B45673 /* MenuItem.swift in Sources */,
 				64B405E32A285C7700B45673 /* MenuView.swift in Sources */,
@@ -570,6 +569,7 @@
 				64B405E82A285CF500B45673 /* Reachability.swift in Sources */,
 				64B405EC2A285D0300B45673 /* InternationalControl.swift in Sources */,
 				64B405F02A285D0300B45673 /* WebBrowser.swift in Sources */,
+				648E46B22AF2B81C00FE2234 /* FunctionCommon.swift in Sources */,
 				64B405F62A285DBE00B45673 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
