@@ -32,7 +32,12 @@ struct Constants {
         "ca-app-pub-3940256099942544/5224354917"
     ]
     static let NATIVE_ID     = "ca-app-pub-3940256099942544/2247696110"
-    static let OPEN_ID       = "ca-app-pub-3940256099942544/3419835294"
+    static let OPEN_ID       =
+    [
+        "ca-app-pub-3940256099942544/3419835294",
+        "ca-app-pub-3940256099942544/3419835294",
+        "ca-app-pub-3940256099942544/3419835294"
+    ]
     static let APP_ID        = "ca-app-pub-3940256099942544~1458002511"
 #else
     static let BANNER_ID     = ""
@@ -40,7 +45,7 @@ struct Constants {
     static let VIDEO_FULL_ID = ""
     static let VIDEO_ID      = [""]
     static let NATIVE_ID     = ""
-    static let OPEN_ID       = ""
+    static let OPEN_ID       = [""]
     static let APP_ID        = ""
 #endif
 }
@@ -112,9 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
             guard let `self` = self else{return}
             self.isSetUpAdsSuccess = true
             self.loadAds()
-            if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil{
-                self.tryToPresentAd()
-            }
         })
     }
     
@@ -213,12 +215,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
     }
 }
 
+var countTierOpenAds = 0
 //Quảng cáo Open Ads
 extension AppDelegate{
     func requestAppOpenAd() {
-        self.appOpenAd = nil
         let request = GADRequest()
-        GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID,
+        GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID[countTierOpenAds],
                           request: request,
                           orientation: UIInterfaceOrientation.portrait,
                           completionHandler: { (appOpenAdIn, error) in
@@ -228,25 +230,22 @@ extension AppDelegate{
             }
             self.appOpenAd = appOpenAdIn
             self.appOpenAd?.fullScreenContentDelegate = self
-            self.loadTime = Date()
-        })
-    }
-
-    func tryToPresentAd() {
-        //Khi ở màn hình sub thì ko hiện ads
-        //Quảng cáo open ads sẽ hiển thị cứ 4 tiếng 1 lần
-        if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController, !isOpenSubs, wasLoadTimeLessThanNHoursAgo(thresholdN: 4) {
-            gOpenAd.present(fromRootViewController: rwc)
-        } else {
-            if self.appOpenAd == nil{
-                self.requestAppOpenAd()
+            
+            if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController {
+                gOpenAd.present(fromRootViewController: rwc)
             }
+        })
+        
+        if countTierOpenAds >= Constants.OPEN_ID.count - 1{
+            countTierOpenAds = 0
+        }else{
+            countTierOpenAds += 1
         }
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil && !isOpenSubs && !isCheckSub{
-            self.tryToPresentAd()
+            self.requestAppOpenAd()
         }
     }
 
@@ -259,6 +258,6 @@ extension AppDelegate{
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        
+        self.appOpenAd = nil
     }
 }
