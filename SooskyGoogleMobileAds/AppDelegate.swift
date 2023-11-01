@@ -21,7 +21,8 @@ struct defaultsKeys {
 
 struct Constants {
     static let App_Specific_Shared_Secret = ""
-#if DEBUG
+    
+    //*** Ads Test ***
     static let BANNER_ID     = "ca-app-pub-3940256099942544/2934735716"
     static let FULL_ID       = "ca-app-pub-3940256099942544/4411468910"
     static let VIDEO_FULL_ID = "ca-app-pub-3940256099942544/8691691433"
@@ -39,15 +40,14 @@ struct Constants {
         "ca-app-pub-3940256099942544/3419835294"
     ]
     static let APP_ID        = "ca-app-pub-3940256099942544~1458002511"
-#else
-    static let BANNER_ID     = ""
-    static let FULL_ID       = ""
-    static let VIDEO_FULL_ID = ""
-    static let VIDEO_ID      = [""]
-    static let NATIVE_ID     = ""
-    static let OPEN_ID       = [""]
-    static let APP_ID        = ""
-#endif
+    //*** Ads Real ***
+//    static let BANNER_ID     = ""
+//    static let FULL_ID       = ""
+//    static let VIDEO_FULL_ID = ""
+//    static let VIDEO_ID      = [""]
+//    static let NATIVE_ID     = ""
+//    static let OPEN_ID       = [""]
+//    static let APP_ID        = ""
 }
 
 var isOpenSubs : Bool = false
