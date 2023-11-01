@@ -54,12 +54,11 @@ var isOpenSubs : Bool = false
 var isCheckTracking : Bool = false
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var windowSplash: UIWindow?
     var window: UIWindow?
     var appOpenAd: GADAppOpenAd?
-    var loadTime = Date()
     
     var isCheckSub : Bool = false
     var isSetUpAdsSuccess : Bool = false
@@ -217,8 +216,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GADFullScreenContentDele
 
 var countTierOpenAds = 0
 //Quảng cáo Open Ads
-extension AppDelegate{
+extension AppDelegate : GADFullScreenContentDelegate{
     func requestAppOpenAd() {
+        if !Reachability.isConnectedToNetwork(){return}
         let request = GADRequest()
         GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID[countTierOpenAds],
                           request: request,
@@ -247,14 +247,6 @@ extension AppDelegate{
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil && !isOpenSubs && !isCheckSub{
             self.requestAppOpenAd()
         }
-    }
-
-    func wasLoadTimeLessThanNHoursAgo(thresholdN: Int) -> Bool {
-        let now = Date()
-        let timeIntervalBetweenNowAndLoadTime = now.timeIntervalSince(self.loadTime)
-        let secondsPerHour = 3600.0
-        let intervalInHours = timeIntervalBetweenNowAndLoadTime / secondsPerHour
-        return intervalInHours < Double(thresholdN)
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {

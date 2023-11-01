@@ -518,11 +518,15 @@ func createAndLoadBanner(_ bannerView : GADBannerView,_ controller : UIViewContr
         }
         else
         {
-            bannerView.adUnitID = Constants.BANNER_ID
-            bannerView.rootViewController = controller
-            bannerView.isAutoloadEnabled = true
-            let request = GADRequest()
-            bannerView.load(request)
+            if !Reachability.isConnectedToNetwork() {
+                heightConstraintBannerView.constant = 0
+            }else{
+                bannerView.adUnitID = Constants.BANNER_ID
+                bannerView.rootViewController = controller
+                bannerView.isAutoloadEnabled = true
+                let request = GADRequest()
+                bannerView.load(request)
+            }
         }
     }
     return bannerView
