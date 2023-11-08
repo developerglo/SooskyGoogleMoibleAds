@@ -24,7 +24,12 @@ struct Constants {
     
     //*** Ads Test ***
     static let BANNER_ID     = "ca-app-pub-3940256099942544/2934735716"
-    static let FULL_ID       = "ca-app-pub-3940256099942544/4411468910"
+    static let FULL_ID       =
+    [
+        "ca-app-pub-3940256099942544/4411468910",
+        "ca-app-pub-3940256099942544/4411468910",
+        "ca-app-pub-3940256099942544/4411468910"
+    ]
     static let VIDEO_FULL_ID = "ca-app-pub-3940256099942544/8691691433"
     static let VIDEO_ID      =
     [
@@ -96,27 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func loadAds() {
-        if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil{
-            return
-        }
-        
-        //Dùng Ads nào thì request Ads đó, còn lại comment
-        if fullAds == nil{
-            createAndLoadInterstitial()
-        }
-        
-//        if fullRewardAds == nil{
-//            createAndLoadInterstitial()
-//        }
-    }
-    
     func setUpAds(){
-        GADMobileAds.sharedInstance().start(completionHandler: {[weak self] status in
-            guard let `self` = self else{return}
-            self.isSetUpAdsSuccess = true
-            self.loadAds()
-        })
+        GADMobileAds.sharedInstance().start()
     }
     
     func checkSubWhenReturnAppAgain(){
@@ -168,19 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func configureNavigationBarAppearance() {
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
     func configVC() {
         isCheckSub = false
         
@@ -192,10 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         windowSplash?.frame = CGRect.zero
-        
-        if self.isSetUpAdsSuccess{
-            self.loadAds()
-        }
+
         
         if isCheckTracking{
             isOpenSubs = false
@@ -211,6 +181,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         
+    }
+    
+    func configureNavigationBarAppearance() {
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = #colorLiteral(red: 0.09411764706, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

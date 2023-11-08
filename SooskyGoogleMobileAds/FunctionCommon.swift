@@ -564,6 +564,7 @@ func createAndLoadRewardInterstitial() -> Void {
     }
 }
 
+var countTierInterstitialAds = 0
 var fullAds : GADInterstitialAd!
 func createAndLoadInterstitial() -> Void {
     let storage = UserDefaults.standard
@@ -571,7 +572,7 @@ func createAndLoadInterstitial() -> Void {
     {
         if !Reachability.isConnectedToNetwork() {return}
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID, request: request) { ads, error in
+        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countTierInterstitialAds], request: request) { ads, error in
             guard error == nil else {
                 print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
                 return
@@ -579,24 +580,12 @@ func createAndLoadInterstitial() -> Void {
             fullAds = ads
         }
     }
-}
-
-func showAdsInterstitial(_ controller : UIViewController) -> Bool
-{
-    let storage = UserDefaults.standard
-    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
-    {
-        return false
-    }
     
-    if(fullAds == nil)
-    {
-        createAndLoadInterstitial()
-        return false
+    if countTierInterstitialAds >= Constants.FULL_ID.count - 1{
+        countTierInterstitialAds = 0
+    }else{
+        countTierInterstitialAds += 1
     }
-    
-    fullAds.present(fromRootViewController: controller)
-    return true
 }
 
 var countTierRewardAds = 0

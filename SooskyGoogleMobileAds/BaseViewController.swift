@@ -14,6 +14,10 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    enum ADS_POS{
+        case POS_FULL
+        case POS_REWARD
+    }
     
     var currentDeviceID = ""
     
@@ -58,14 +62,6 @@ extension BaseViewController : GADFullScreenContentDelegate
     
     func countAdsToShowVC(_ startAds : Int, _ loopAds : Int, _ countFullAds : inout Int)
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(ShowAdsFull), name: .SHOW_ADS, object: nil)
-        if fullAds != nil
-        {
-            fullAds.fullScreenContentDelegate = self
-        }else{
-            createAndLoadInterstitial()
-        }
-        
         countFullAds += 1
         var isShowAds = false
         if countFullAds < startAds
@@ -90,12 +86,7 @@ extension BaseViewController : GADFullScreenContentDelegate
         
         if isShowAds
         {
-            showActivityIndicatoryCountDown(isRV: false, pos: .SHOW_ADS) { (str) in
-                if str == "removeads"
-                {
-                    closeAdsFull()
-                }
-            }
+            showFull()
         }
         else
         {
@@ -105,37 +96,30 @@ extension BaseViewController : GADFullScreenContentDelegate
     
     func showFull()
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(ShowAdsFull), name: .SHOW_ADS, object: nil)
-        
-        if(fullAds != nil)
-        {
-            fullAds.fullScreenContentDelegate = self
-        }else{
-            createAndLoadInterstitial()
-        }
-        
-        showActivityIndicatoryCountDown(isRV: false, pos: .SHOW_ADS) { (str) in
-            if str == "removeads"
-            {
-                closeAdsFull()
-            }
-        }
+        self.showPopupLoadingAds(.POS_FULL)
     }
     
     @objc func ShowAdsFull()
     {
-        DispatchQueue.main.async{
-            if !showAdsInterstitial(self)
-            {
-                self.closeAdsFull()
-            }
+        let storage = UserDefaults.standard
+        if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
+        {
+            return
         }
         
+        guard let fullAds = fullAds else{
+            closeAdsFull()
+            return
+        }
+        
+        fullAds.fullScreenContentDelegate = self
+        fullAds.present(fromRootViewController: self)
+        
     }
-    
+
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         if let _ = ad as? GADInterstitialAd {
-            createAndLoadInterstitial()
+            fullAds = nil
             closeAdsFull()
         }else if let _ = ad as? GADRewardedAd {
             rewardAds = nil
@@ -164,17 +148,21 @@ extension BaseViewController
         self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
             
         } actionHandler: { yes in
-            self.showLoadingRewardAds()
+            self.showPopupLoadingAds(ADS_POS.POS_REWARD)
         }
     }
     
-    func showLoadingRewardAds(){
-        createAndLoadRewardedAds()
+    func showPopupLoadingAds(_ pos : ADS_POS){
+        if pos == .POS_REWARD{
+            createAndLoadRewardedAds()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
+        }else{
+            createAndLoadInterstitial()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsFull), name: .SHOW_ADS, object: nil)
+        }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
         
         enableAndDisableNaviAndTabbar(isEnable: false)
-        
         countTimerShowAds = 5
         
         var parentView : UIView
@@ -223,19 +211,19 @@ extension BaseViewController
         parentView.addSubview(containerView)
         
         let array : [Any] = [textDes, containerView, Notification.Name.SHOW_ADS]
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerReward), userInfo: array, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerAds), userInfo: array, repeats: true)
         
         actInd.startAnimating()
     }
     
-    @objc func updateTimerReward(timer: Timer)
+    @objc func updateTimerAds(timer: Timer)
     {
         let array : [Any] = timer.userInfo as! [Any]
         countTimerShowAds -= 1
         let txLabel = array[0] as! UILabel
         txLabel.text = "Loading Ads..."
         
-        if rewardAds != nil || countTimerShowAds <= 0
+        if fullAds != nil || rewardAds != nil || countTimerShowAds <= 0
         {
             timer.invalidate()
             
