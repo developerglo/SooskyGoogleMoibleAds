@@ -9,6 +9,124 @@ import UIKit
 import GoogleMobileAds
 import Foundation
 
+
+var countTimerShowAds : Int = 0
+var timer : Timer? = nil
+
+extension Notification.Name
+{
+    static let SHOW_ADS = Notification.Name("SHOW_ADS")
+}
+
+func createAndLoadBanner(_ bannerView : GADBannerView,_ controller : UIViewController,_ heightConstraintBannerView : NSLayoutConstraint) -> GADBannerView{
+    let storage = UserDefaults.standard
+    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
+    {
+        hideBanner(bannerView, heightConstraintBannerView)
+    }
+    else
+    {
+        if Constants.BANNER_ID == ""
+        {
+            heightConstraintBannerView.constant = 0
+        }
+        else
+        {
+            if !Reachability.isConnectedToNetwork() {
+                heightConstraintBannerView.constant = 0
+            }else{
+                bannerView.adUnitID = Constants.BANNER_ID
+                bannerView.rootViewController = controller
+                bannerView.isAutoloadEnabled = true
+                let request = GADRequest()
+                bannerView.load(request)
+            }
+        }
+    }
+    return bannerView
+}
+
+func hideBanner(_ bannerView : GADBannerView, _ heightConstraintBannerView : NSLayoutConstraint)
+{
+    heightConstraintBannerView.constant = 0
+    bannerView.layoutIfNeeded()
+    bannerView.isHidden = true
+}
+
+func showBanner(_ bannerView : GADBannerView, _ heightConstraintBannerView : NSLayoutConstraint)
+{
+    heightConstraintBannerView.constant = 50
+    bannerView.layoutIfNeeded()
+    bannerView.isHidden = false
+}
+
+
+var fullRewardAds : GADRewardedInterstitialAd!
+func createAndLoadRewardInterstitial() -> Void {
+    let storage = UserDefaults.standard
+    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
+    {
+        if !Reachability.isConnectedToNetwork() {return}
+        let request = GADRequest()
+        GADRewardedInterstitialAd.load(withAdUnitID: Constants.VIDEO_FULL_ID, request: request) { (rewardFull, error) in
+            guard error == nil else {
+                print("[DEBUG] load ads Full Reward error : \(error?.localizedDescription)")
+                return
+            }
+            fullRewardAds = rewardFull
+        }
+    }
+}
+
+var countTierInterstitialAds = 0
+var fullAds : GADInterstitialAd!
+func createAndLoadInterstitial() -> Void {
+    let storage = UserDefaults.standard
+    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
+    {
+        if !Reachability.isConnectedToNetwork() {return}
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countTierInterstitialAds], request: request) { ads, error in
+            guard error == nil else {
+                print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
+                return
+            }
+            fullAds = ads
+        }
+    }
+    
+    if countTierInterstitialAds >= Constants.FULL_ID.count - 1{
+        countTierInterstitialAds = 0
+    }else{
+        countTierInterstitialAds += 1
+    }
+}
+
+var countTierRewardAds = 0
+var rewardAds : GADRewardedAd!
+func createAndLoadRewardedAds() -> Void {
+    let storage = UserDefaults.standard
+    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
+    {
+        if !Reachability.isConnectedToNetwork() {return}
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID[countTierRewardAds], request: GADRequest()) { ads, error in
+            guard error == nil else {
+                print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
+                return
+            }
+            rewardAds = ads
+        }
+    }
+    
+    if countTierRewardAds >= Constants.VIDEO_ID.count - 1{
+        countTierRewardAds = 0
+    }else{
+        countTierRewardAds += 1
+    }
+}
+
+
 class BaseViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -16,6 +134,7 @@ class BaseViewController: UIViewController {
     
     enum ADS_POS{
         case POS_FULL
+        case POS_FULL_REWARD
         case POS_REWARD
     }
     
@@ -125,7 +244,7 @@ extension BaseViewController : GADFullScreenContentDelegate
             rewardAds = nil
             closeAdsReward()
         }else{
-            createAndLoadRewardInterstitial()
+            fullRewardAds = nil
             closeAdsReward10s()
         }
     }
@@ -156,9 +275,12 @@ extension BaseViewController
         if pos == .POS_REWARD{
             createAndLoadRewardedAds()
             NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward), name: .SHOW_ADS, object: nil)
-        }else{
+        }else if pos == .POS_FULL{
             createAndLoadInterstitial()
             NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsFull), name: .SHOW_ADS, object: nil)
+        }else{
+            createAndLoadRewardInterstitial()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward10s), name: .SHOW_ADS, object: nil)
         }
         
         
@@ -288,20 +410,7 @@ extension BaseViewController
         self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
             
         } actionHandler: { yes in
-            self.showLoadingRewardAds10s()
-        }
-    }
-    
-    func showLoadingRewardAds10s() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.ShowAdsReward10s), name: .SHOW_ADS, object: nil)
-        
-        self.showActivityIndicatoryCountDown(isRV: true, pos: .SHOW_ADS) { (str) in
-            if str == "loadVideo"
-            {
-                if self.isLoadVideoFail {
-                    self.closeAdsReward10s()
-                }
-            }
+            self.showPopupLoadingAds(ADS_POS.POS_FULL_REWARD)
         }
     }
     

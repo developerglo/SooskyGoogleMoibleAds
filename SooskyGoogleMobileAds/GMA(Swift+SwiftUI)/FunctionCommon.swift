@@ -54,15 +54,6 @@ extension UIColor {
     }
 }
 
-var countTimerShowAds : Int = 0
-var timer : Timer? = nil
-var PositionAdsFull = ["Tutorial", "ListPlaying", "CustomTabbar"]
-
-extension Notification.Name
-{
-    static let SHOW_ADS = Notification.Name("SHOW_ADS")
-}
-
 extension UIViewController {
     func showContent(string: String?, isNav : Bool) {
         guard let urlString = string, let url = URL(string: urlString) else { return }
@@ -137,17 +128,6 @@ extension UIViewController {
     enum HUDIndicatorView{
         case success
         case error
-    }
-    
-    func showSubs(_ screenName : String) {
-        if screenName == "SubscriptionB"{
-            isOpenSubs = true
-        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tutvc = storyboard.instantiateViewController(withIdentifier: screenName)
-        tutvc.modalPresentationStyle = .fullScreen
-        self.present(tutvc, animated: true, completion: nil)
     }
     
     func hideActivityIndicatorys()
@@ -346,97 +326,6 @@ extension UIViewController {
             }
         }
     }
-    
-    func showActivityIndicatoryCountDown(isRV : Bool, pos : Notification.Name,showCompletion completion: (String) -> Void)
-    {
-        if !isRV
-        {
-            let storage = UserDefaults.standard
-            if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
-            {
-                completion("removeads")
-                return
-            }
-        }
-        else
-        {
-            completion("loadVideo")
-        }
-        
-        enableAndDisableNaviAndTabbar(isEnable: false)
-        
-        countTimerShowAds = 1
-        
-        var parentView : UIView
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window
-        {
-            parentView = window
-        }
-        else if let supperview = self.view.superview
-        {
-            parentView = supperview
-        }
-        else
-        {
-            parentView = self.view
-        }
-        
-        let containerView : UIView = UIView()
-        containerView.frame = parentView.bounds
-        containerView.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
-        
-        let loadingView: UIView = UIView()
-        loadingView.frame = CGRect.init(x: ((containerView.frame.width - 150) / 2), y: ((containerView.frame.height / 2 - 150)), width: 150, height: 150)
-        loadingView.center = containerView.center
-        loadingView.backgroundColor = UIColor.init(red: 68/255, green: 68/255, blue: 68/255, alpha: 0.7)
-        loadingView.clipsToBounds = true
-        loadingView.layer.cornerRadius = 10
-        
-        
-        let textDes = UILabel.init(frame: CGRect(x : 0, y : 0, width : 150, height: 50))
-        textDes.textColor = UIColor.white
-        textDes.font = UIFont(name:"SegoeUI", size: 15.0)
-        textDes.textAlignment = .center
-        textDes.numberOfLines = 0
-        textDes.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2 + 45)
-        textDes.text = "Loading Ads\n\(countTimerShowAds)..."
-        loadingView.addSubview(textDes)
-        
-        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-        actInd.frame = CGRect.init(x: 0, y: 0, width: 40, height: 40)
-        actInd.style =
-            UIActivityIndicatorView.Style.whiteLarge
-        actInd.center = CGPoint.init(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
-        loadingView.addSubview(actInd)
-        containerView.addSubview(loadingView)
-        
-        parentView.addSubview(containerView)
-        
-        let array : [Any] = [textDes, containerView, pos]
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: array, repeats: true)
-        
-        actInd.startAnimating()
-    }
-    
-    @objc func updateTimer(timer: Timer)
-    {
-        let array : [Any] = timer.userInfo as! [Any]
-        countTimerShowAds -= 1
-        let txLabel = array[0] as! UILabel
-        txLabel.text = "Loading Ads\n\(countTimerShowAds)..."
-        if countTimerShowAds <= 0
-        {
-            timer.invalidate()
-            
-            enableAndDisableNaviAndTabbar(isEnable: true)
-            
-            let containerView = array[1] as! UIView
-            containerView.removeFromSuperview()
-            let posAdsFull = array[2] as! Notification.Name
-            NotificationCenter.default.post(name: posAdsFull, object: nil)
-            
-        }
-    }
 
     func showAlertDialog(title:String? = nil,
                          subtitle:String? = nil,
@@ -501,113 +390,5 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-func createAndLoadBanner(_ bannerView : GADBannerView,_ controller : UIViewController,_ heightConstraintBannerView : NSLayoutConstraint) -> GADBannerView{
-    let storage = UserDefaults.standard
-    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil
-    {
-        hideBanner(bannerView, heightConstraintBannerView)
-    }
-    else
-    {
-        if Constants.BANNER_ID == ""
-        {
-            heightConstraintBannerView.constant = 0
-        }
-        else
-        {
-            if !Reachability.isConnectedToNetwork() {
-                heightConstraintBannerView.constant = 0
-            }else{
-                bannerView.adUnitID = Constants.BANNER_ID
-                bannerView.rootViewController = controller
-                bannerView.isAutoloadEnabled = true
-                let request = GADRequest()
-                bannerView.load(request)
-            }
-        }
-    }
-    return bannerView
-}
-
-func hideBanner(_ bannerView : GADBannerView, _ heightConstraintBannerView : NSLayoutConstraint)
-{
-    heightConstraintBannerView.constant = 0
-    bannerView.layoutIfNeeded()
-    bannerView.isHidden = true
-}
-
-func showBanner(_ bannerView : GADBannerView, _ heightConstraintBannerView : NSLayoutConstraint)
-{
-    heightConstraintBannerView.constant = 50
-    bannerView.layoutIfNeeded()
-    bannerView.isHidden = false
-}
-
-
-var fullRewardAds : GADRewardedInterstitialAd!
-func createAndLoadRewardInterstitial() -> Void {
-    let storage = UserDefaults.standard
-    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
-    {
-        if !Reachability.isConnectedToNetwork() {return}
-        let request = GADRequest()
-        GADRewardedInterstitialAd.load(withAdUnitID: Constants.VIDEO_FULL_ID, request: request) { (rewardFull, error) in
-            guard error == nil else {
-                print("[DEBUG] load ads Full Reward error : \(error?.localizedDescription)")
-                return
-            }
-            fullRewardAds = rewardFull
-        }
-    }
-}
-
-var countTierInterstitialAds = 0
-var fullAds : GADInterstitialAd!
-func createAndLoadInterstitial() -> Void {
-    let storage = UserDefaults.standard
-    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
-    {
-        if !Reachability.isConnectedToNetwork() {return}
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countTierInterstitialAds], request: request) { ads, error in
-            guard error == nil else {
-                print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
-                return
-            }
-            fullAds = ads
-        }
-    }
-    
-    if countTierInterstitialAds >= Constants.FULL_ID.count - 1{
-        countTierInterstitialAds = 0
-    }else{
-        countTierInterstitialAds += 1
-    }
-}
-
-var countTierRewardAds = 0
-var rewardAds : GADRewardedAd!
-func createAndLoadRewardedAds() -> Void {
-    let storage = UserDefaults.standard
-    if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
-    {
-        if !Reachability.isConnectedToNetwork() {return}
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID[countTierRewardAds], request: GADRequest()) { ads, error in
-            guard error == nil else {
-                print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
-                return
-            }
-            rewardAds = ads
-        }
-    }
-    
-    if countTierRewardAds >= Constants.VIDEO_ID.count - 1{
-        countTierRewardAds = 0
-    }else{
-        countTierRewardAds += 1
     }
 }
