@@ -198,10 +198,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 var countTierOpenAds = 0
+var canShowOpenAds : Bool = false
 //Quảng cáo Open Ads
 extension AppDelegate : GADFullScreenContentDelegate{
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        canShowOpenAds = true
+    }
+    
     func requestAppOpenAd() {
         if !Reachability.isConnectedToNetwork(){return}
+        if self.appOpenAd != nil{return}
+        if !canShowOpenAds{return}
+        canShowOpenAds = false
+        
         let request = GADRequest()
         GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID[countTierOpenAds],
                           request: request,
@@ -209,6 +218,7 @@ extension AppDelegate : GADFullScreenContentDelegate{
                           completionHandler: { (appOpenAdIn, error) in
             guard error == nil else {
                 print("[DEBUG] load Open Ads error : \(error?.localizedDescription)")
+                self.appOpenAd = nil
                 return
             }
             self.appOpenAd = appOpenAdIn
@@ -233,6 +243,10 @@ extension AppDelegate : GADFullScreenContentDelegate{
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        self.appOpenAd = nil
+    }
+    
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         self.appOpenAd = nil
     }
 }
