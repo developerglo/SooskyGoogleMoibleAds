@@ -16,9 +16,9 @@ class SooskyTestAdsVC: BaseViewController {
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var heightConstraintBannerView: NSLayoutConstraint!
     
-    //Tắt quảng cáo ads full
-    override func turnOffAdsFull() {
-        print("[DEBUG] Đóng quảng cáo full")
+    //Tắt quảng cáo ads
+    override func turnOffAds() {
+        print("[DEBUG] Đóng quảng cáo")
     }
     
     //Tắt quảng cáo ads Reward và Reward 10s có thưởng
@@ -38,9 +38,25 @@ class SooskyTestAdsVC: BaseViewController {
         bannerView = createAndLoadBanner(bannerView, self, heightConstraintBannerView)
     }
     
+    func showPopupConfirmToShowRewardAds(_ title : String, _ subTitle : String){
+        self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
+            
+        } actionHandler: { yes in
+            self.showPopupLoadingAds(ADS_POS.POS_REWARD)
+        }
+    }
+    
+    func showPopupConfirmToShowRewardAds10s(_ title : String, _ subTitle : String){
+        self.showConfirmDialog(title: title, subtitle: subTitle, actionTitle: "YES", cancelTitle: "NO") { no in
+            
+        } actionHandler: { yes in
+            self.showPopupLoadingAds(ADS_POS.POS_FULL_REWARD)
+        }
+    }
+    
     //MARK: - Button Action
     @IBAction func showAdsFull(_ sender: UIButton) {
-        self.showFull()
+        showPopupLoadingAds(.POS_FULL)
     }
     
     @IBAction func showAdsReward10s(_ sender: UIButton) {
@@ -53,14 +69,14 @@ class SooskyTestAdsVC: BaseViewController {
     
     //Tương tác 3 lần đầu tiên hiển thị quảng cáo full, sau đó tương tác 5 lần mới hiển thị quảng cáo và lặp lại
     @IBAction func countToShowAds1(_ sender: UIButton) {
-        self.countAdsToShowVC(3, 5, &countFullAdsSoosky)
+        countAdsToShowVC(3, 5, &countFullAdsSoosky)
     }
     
     @IBAction func countToShowAds2(_ sender: UIButton) {
-        self.countAdsToShowVC(3, 5, &countFullAdsSoosky)
+       countAdsToShowVC(3, 5, &countFullAdsSoosky)
     }
     
     @IBAction func countToShowAds3(_ sender: UIButton) {
-        self.countAdsToShowVC(3, 5, &countFullAdsSoosky)
+        countAdsToShowVC(3, 5, &countFullAdsSoosky)
     }
 }

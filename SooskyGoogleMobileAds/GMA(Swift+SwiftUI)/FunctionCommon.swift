@@ -125,11 +125,6 @@ extension UIViewController {
         return parentView
     }
     
-    enum HUDIndicatorView{
-        case success
-        case error
-    }
-    
     func hideActivityIndicatorys()
     {
         var parentView : UIView
@@ -298,33 +293,6 @@ extension UIViewController {
         
         parentView.addSubview(containerView)
         actInd.startAnimating()
-    }
-    
-    func enableAndDisableNaviAndTabbar(isEnable : Bool)
-    {
-        if let tabBarController = self.tabBarController, let tabBarItems = tabBarController.tabBar.items
-        {
-            tabBarItems.forEach { (item) in
-                item.isEnabled = isEnable
-            }
-        }
-        
-        if let navigationController = self.navigationController
-        {
-            if let leftBarButtonItems = navigationController.navigationItem.leftBarButtonItems
-            {
-                leftBarButtonItems.forEach { (item) in
-                    item.isEnabled = isEnable
-                }
-            }
-            
-            if let rightBarButtonItems = navigationController.navigationItem.rightBarButtonItems
-            {
-                rightBarButtonItems.forEach { (item) in
-                    item.isEnabled = isEnable
-                }
-            }
-        }
     }
 
     func showAlertDialog(title:String? = nil,
