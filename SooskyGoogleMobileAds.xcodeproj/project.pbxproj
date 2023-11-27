@@ -60,6 +60,8 @@
 		64B405FE2A28631700B45673 /* SplashLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1A28CF22CA001A768F /* SplashLoadingVC.swift */; };
 		64B405FF2A28631A00B45673 /* SplashLoadingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B405F92A28609D00B45673 /* SplashLoadingVC.xib */; };
 		64B406002A28633600B45673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648AAE0828CF1EAC001A768F /* Assets.xcassets */; };
+		64C17FB82B14970600F14CC3 /* AdmobAppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C17FB72B14970600F14CC3 /* AdmobAppOpenAd.swift */; };
+		64C17FBA2B14A0E200F14CC3 /* AdmobBannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C17FB92B14A0E200F14CC3 /* AdmobBannerAd.swift */; };
 		64EACBC12AFCDB2D000269C0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADE728CF1E1B001A768F /* BaseViewController.swift */; };
 		64EACBC22AFCDD2A000269C0 /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
 		86926445331B415A15FBA78D /* Pods_SooskyGoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCB8FF662C1F662757E67FB /* Pods_SooskyGoogleMobileAds.framework */; };
@@ -112,6 +114,8 @@
 		64B405F52A285DBE00B45673 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B405F92A28609D00B45673 /* SplashLoadingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashLoadingVC.xib; sourceTree = "<group>"; };
 		64B406012A2863EF00B45673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		64C17FB72B14970600F14CC3 /* AdmobAppOpenAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobAppOpenAd.swift; sourceTree = "<group>"; };
+		64C17FB92B14A0E200F14CC3 /* AdmobBannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobBannerAd.swift; sourceTree = "<group>"; };
 		9F6E42FB738F8BC317CF2A3E /* Pods-SooskyGMASwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SooskyGMASwiftUI.release.xcconfig"; path = "Target Support Files/Pods-SooskyGMASwiftUI/Pods-SooskyGMASwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		A1B09C4D8C5001C3743FB07D /* Pods-SooskyGoogleMobileAds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SooskyGoogleMobileAds.debug.xcconfig"; path = "Target Support Files/Pods-SooskyGoogleMobileAds/Pods-SooskyGoogleMobileAds.debug.xcconfig"; sourceTree = "<group>"; };
 		F98AB300EAE3B582771EC7E8 /* Pods_SooskyGMASwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SooskyGMASwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +167,6 @@
 			children = (
 				648AAE1328CF203E001A768F /* Info.plist */,
 				648AADEB28CF1E68001A768F /* GMA(Swift+SwiftUI) */,
-				64B114D52B1092EF00754817 /* Ads */,
 				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
 				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
 				648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */,
@@ -177,6 +180,7 @@
 			children = (
 				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				648AAE0828CF1EAC001A768F /* Assets.xcassets */,
+				64B114D52B1092EF00754817 /* Ads */,
 				64B405FB2A2860B300B45673 /* SplashVC */,
 				648AAE1528CF2202001A768F /* AdsTracking */,
 				648AAE0E28CF1FD6001A768F /* Network */,
@@ -241,6 +245,8 @@
 				64B114D62B10932900754817 /* AdmobInterstitialAd.swift */,
 				64B114DA2B1098F800754817 /* AdmobRewardedAd.swift */,
 				64B114DC2B109C4800754817 /* AdmobRewardedInterstitialAd.swift */,
+				64C17FB72B14970600F14CC3 /* AdmobAppOpenAd.swift */,
+				64C17FB92B14A0E200F14CC3 /* AdmobBannerAd.swift */,
 				64B114D82B10966A00754817 /* EPosAdmobAd.swift */,
 				64B114DE2B10A25500754817 /* AdmobExtensions.swift */,
 			);
@@ -562,7 +568,9 @@
 				64EACBC22AFCDD2A000269C0 /* FunctionCommon.swift in Sources */,
 				648AAE0228CF1E76001A768F /* WebBrowserViewController.swift in Sources */,
 				648AADE828CF1E1B001A768F /* BaseViewController.swift in Sources */,
+				64C17FBA2B14A0E200F14CC3 /* AdmobBannerAd.swift in Sources */,
 				648AAE1B28CF22CA001A768F /* SplashLoadingVC.swift in Sources */,
+				64C17FB82B14970600F14CC3 /* AdmobAppOpenAd.swift in Sources */,
 				648AADFE28CF1E76001A768F /* SafariActivity.swift in Sources */,
 				648AAE0428CF1E76001A768F /* InternationalControl.swift in Sources */,
 				64B114D92B10966A00754817 /* EPosAdmobAd.swift in Sources */,

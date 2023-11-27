@@ -13,8 +13,7 @@ var countFullAdsSoosky : Int = 0
 
 class SooskyTestAdsVC: BaseViewController {
 
-    @IBOutlet weak var bannerView: GADBannerView!
-    @IBOutlet weak var heightConstraintBannerView: NSLayoutConstraint!
+    @IBOutlet weak var bannerView: AdmobBannerAd!
     
     //Tắt quảng cáo ads
     override func turnOffAds() {
@@ -33,9 +32,8 @@ class SooskyTestAdsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        bannerView = createAndLoadBanner(bannerView, self, heightConstraintBannerView)
+        
+        bannerView.loadingAds()
     }
     
     func showPopupConfirmToShowRewardAds(_ title : String, _ subTitle : String){

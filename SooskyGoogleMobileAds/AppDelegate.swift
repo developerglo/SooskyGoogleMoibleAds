@@ -40,9 +40,9 @@ struct Constants {
     static let NATIVE_ID     = "ca-app-pub-3940256099942544/2247696110"
     static let OPEN_ID       =
     [
-        "ca-app-pub-3940256099942544/3419835294",
-        "ca-app-pub-3940256099942544/3419835294",
-        "ca-app-pub-3940256099942544/3419835294"
+        "ca-app-pub-3940256099942544/5662855259",
+        "ca-app-pub-3940256099942544/5662855259",
+        "ca-app-pub-3940256099942544/5662855259"
     ]
     static let APP_ID        = "ca-app-pub-3940256099942544~1458002511"
     //*** Ads Real ***
@@ -63,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var windowSplash: UIWindow?
     var window: UIWindow?
-    var appOpenAd: GADAppOpenAd?
     
     var isCheckSub : Bool = false
     var isSetUpAdsSuccess : Bool = false
@@ -197,56 +196,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-var countTierOpenAds = 0
-var canShowOpenAds : Bool = false
+
 //Quảng cáo Open Ads
-extension AppDelegate : GADFullScreenContentDelegate{
+extension AppDelegate{
     func applicationWillEnterForeground(_ application: UIApplication) {
         canShowOpenAds = true
     }
     
-    func requestAppOpenAd() {
-        if !Reachability.isConnectedToNetwork(){return}
-        if self.appOpenAd != nil{return}
-        if !canShowOpenAds{return}
-        canShowOpenAds = false
-        
-        let request = GADRequest()
-        GADAppOpenAd.load(withAdUnitID: Constants.OPEN_ID[countTierOpenAds],
-                          request: request,
-                          orientation: UIInterfaceOrientation.portrait,
-                          completionHandler: { (appOpenAdIn, error) in
-            guard error == nil else {
-                print("[DEBUG] load Open Ads error : \(error?.localizedDescription)")
-                self.appOpenAd = nil
-                return
-            }
-            self.appOpenAd = appOpenAdIn
-            self.appOpenAd?.fullScreenContentDelegate = self
-            
-            if let gOpenAd = self.appOpenAd, let rwc = self.window?.rootViewController {
-                gOpenAd.present(fromRootViewController: rwc)
-            }
-        })
-        
-        if countTierOpenAds >= Constants.OPEN_ID.count - 1{
-            countTierOpenAds = 0
-        }else{
-            countTierOpenAds += 1
-        }
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil && !isOpenSubs && !isCheckSub{
-            self.requestAppOpenAd()
+            AdmobAppOpenAd.sharedInstance.tryToPresentAd()
         }
-    }
-    
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        self.appOpenAd = nil
-    }
-    
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        self.appOpenAd = nil
     }
 }

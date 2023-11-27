@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +58,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCi-mv-X7F" customClass="GADBannerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCi-mv-X7F" customClass="AdmobBannerAd" customModule="SooskyGoogleMobileAds" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -120,8 +120,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="hCi-mv-X7F" id="Xj7-dL-baE"/>
-                        <outlet property="heightConstraintBannerView" destination="mVD-bd-xFO" id="gky-nM-che"/>
+                        <outlet property="bannerView" destination="hCi-mv-X7F" id="Io8-qF-is8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
