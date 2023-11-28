@@ -162,7 +162,7 @@ extension UIViewController{
         actInd.startAnimating()
     }
     
-    fileprivate func removePopupLoadingAds(_ timer: Timer, _ array: [Any]) {
+    fileprivate func removePopupLoadingAds(_ timer: Timer, _ array: [Any], _ isFinishTime : Bool = false) {
         timer.invalidate()
         
         enableAndDisableNaviAndTabbar(isEnable: true)
@@ -170,7 +170,10 @@ extension UIViewController{
         let containerView = array[1] as! UIView
         containerView.removeFromSuperview()
         
-        turnOffAds()
+        if isFinishTime{
+            turnOffAds()
+        }
+        
     }
     
     fileprivate func showAdsIfReady(_ timer: Timer, _ array: [Any]) {
@@ -195,7 +198,7 @@ extension UIViewController{
         txLabel.text = "Loading Ads..."
         
         if countTimerShowAds <= 0{
-            removePopupLoadingAds(timer, array)
+            removePopupLoadingAds(timer, array, true)
         }else{
             showAdsIfReady(timer, array)
         }
