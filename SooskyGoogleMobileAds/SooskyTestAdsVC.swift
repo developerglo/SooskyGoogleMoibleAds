@@ -11,9 +11,10 @@ import GoogleMobileAds
 //Khởi tạo biến count Ads Full  ở ngoài class
 var countFullAdsSoosky : Int = 0
 
-class SooskyTestAdsVC: BaseViewController {
+class SooskyTestAdsVC: UIViewController {
 
     @IBOutlet weak var bannerView: AdmobBannerAd!
+    @IBOutlet weak var bannerViewHeightAnchor: NSLayoutConstraint!
     
     //Tắt quảng cáo ads
     override func turnOffAds() {
@@ -33,7 +34,7 @@ class SooskyTestAdsVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bannerView.loadingAds()
+        bannerView.loadingAds(bannerViewHeightAnchor)
     }
     
     func showPopupConfirmToShowRewardAds(_ title : String, _ subTitle : String){

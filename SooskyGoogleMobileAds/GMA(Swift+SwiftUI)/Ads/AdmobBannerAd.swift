@@ -17,6 +17,7 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
         return spinner
     }()
     private var bannerView: GADBannerView?
+    private var inputsContainerHeightAnchor : NSLayoutConstraint?
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +44,8 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
         spinnerView.removeFromSuperview()
     }
     
-    func loadingAds(height: CGFloat = 50) {
+    func loadingAds(_ heightAnchor : NSLayoutConstraint ,_ height: CGFloat = 50) {
+        self.inputsContainerHeightAnchor = heightAnchor
         if !Reachability.isConnectedToNetwork() {
             hiddenAds()
             return
@@ -62,7 +64,7 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
         bannerView = GADBannerView(adSize: GADAdSizeFromCGSize(CGSize(width: UIScreen.main.bounds.width, height: height)))
         bannerView?.adUnitID = Constants.BANNER_ID
         bannerView?.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(bannerView ?? UIView())
+        self.addSubview(bannerView ?? UIView())
         bannerView?.delegate = self
         bannerView?.topAnchor.constraint(equalTo: topAnchor).isActive = true
         bannerView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -77,7 +79,7 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
     func hiddenAds() {
         hiddenSpinnerView()
         bannerView?.removeFromSuperview()
-//        self.heightA
+        self.inputsContainerHeightAnchor?.constant = 0
         self.layoutIfNeeded()
        
     }

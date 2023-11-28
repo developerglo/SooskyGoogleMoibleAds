@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		093FE23592EA57C27BF280FE /* Pods_SooskyGMASwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98AB300EAE3B582771EC7E8 /* Pods_SooskyGMASwiftUI.framework */; };
-		648AADE828CF1E1B001A768F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADE728CF1E1B001A768F /* BaseViewController.swift */; };
+		646591482B15C7070008357D /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
 		648AADFD28CF1E76001A768F /* WebBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADED28CF1E76001A768F /* WebBrowser.swift */; };
 		648AADFE28CF1E76001A768F /* SafariActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADEE28CF1E76001A768F /* SafariActivity.swift */; };
 		648AADFF28CF1E76001A768F /* WebBrowser.strings in Resources */ = {isa = PBXBuildFile; fileRef = 648AADF128CF1E76001A768F /* WebBrowser.strings */; };
@@ -63,7 +63,6 @@
 		64C17FB82B14970600F14CC3 /* AdmobAppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C17FB72B14970600F14CC3 /* AdmobAppOpenAd.swift */; };
 		64C17FBA2B14A0E200F14CC3 /* AdmobBannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C17FB92B14A0E200F14CC3 /* AdmobBannerAd.swift */; };
 		64EACBC12AFCDB2D000269C0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AADE728CF1E1B001A768F /* BaseViewController.swift */; };
-		64EACBC22AFCDD2A000269C0 /* FunctionCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AAE1D28CF3594001A768F /* FunctionCommon.swift */; };
 		86926445331B415A15FBA78D /* Pods_SooskyGoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCB8FF662C1F662757E67FB /* Pods_SooskyGoogleMobileAds.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,7 +166,6 @@
 			children = (
 				648AAE1328CF203E001A768F /* Info.plist */,
 				648AADEB28CF1E68001A768F /* GMA(Swift+SwiftUI) */,
-				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
 				648AAE0C28CF1F39001A768F /* AppDelegate.swift */,
 				648AAE0A28CF1EE7001A768F /* SooskyTestAdsVC.swift */,
 				648AAE0628CF1E92001A768F /* Main.storyboard */,
@@ -178,8 +176,8 @@
 		648AADEB28CF1E68001A768F /* GMA(Swift+SwiftUI) */ = {
 			isa = PBXGroup;
 			children = (
-				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				648AAE0828CF1EAC001A768F /* Assets.xcassets */,
+				648AAE1D28CF3594001A768F /* FunctionCommon.swift */,
 				64B114D52B1092EF00754817 /* Ads */,
 				64B405FB2A2860B300B45673 /* SplashVC */,
 				648AAE1528CF2202001A768F /* AdsTracking */,
@@ -257,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				64B406012A2863EF00B45673 /* Info.plist */,
+				648AADE728CF1E1B001A768F /* BaseViewController.swift */,
 				64B405F52A285DBE00B45673 /* AppDelegate.swift */,
 				64B405CA2A285C7700B45673 /* Banner */,
 				64B405D82A285C7700B45673 /* Interstitial */,
@@ -556,6 +555,7 @@
 			files = (
 				648AAE0D28CF1F39001A768F /* AppDelegate.swift in Sources */,
 				648AAE0328CF1E76001A768F /* NavigationBarAppearance.swift in Sources */,
+				646591482B15C7070008357D /* FunctionCommon.swift in Sources */,
 				648AAE1128CF1FEA001A768F /* Reachability.swift in Sources */,
 				64B114DD2B109C4800754817 /* AdmobRewardedInterstitialAd.swift in Sources */,
 				648AAE1228CF1FEA001A768F /* NetworkActivityIndicatorManager.swift in Sources */,
@@ -565,9 +565,7 @@
 				64B114DB2B1098F800754817 /* AdmobRewardedAd.swift in Sources */,
 				648AAE0528CF1E76001A768F /* WebBrowserDelegate.swift in Sources */,
 				64B114D72B10932900754817 /* AdmobInterstitialAd.swift in Sources */,
-				64EACBC22AFCDD2A000269C0 /* FunctionCommon.swift in Sources */,
 				648AAE0228CF1E76001A768F /* WebBrowserViewController.swift in Sources */,
-				648AADE828CF1E1B001A768F /* BaseViewController.swift in Sources */,
 				64C17FBA2B14A0E200F14CC3 /* AdmobBannerAd.swift in Sources */,
 				648AAE1B28CF22CA001A768F /* SplashLoadingVC.swift in Sources */,
 				64C17FB82B14970600F14CC3 /* AdmobAppOpenAd.swift in Sources */,

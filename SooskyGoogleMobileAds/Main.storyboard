@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="hCi-mv-X7F" id="Io8-qF-is8"/>
+                        <outlet property="bannerViewHeightAnchor" destination="mVD-bd-xFO" id="XVk-5P-p5B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
