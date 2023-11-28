@@ -44,7 +44,8 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
         spinnerView.removeFromSuperview()
     }
     
-    func loadingAds(_ heightAnchor : NSLayoutConstraint ,_ height: CGFloat = 50) {
+    func loadingAds(heightAnchor : NSLayoutConstraint ,spinColor : UIColor) {
+        self.spinnerView.color = spinColor
         self.inputsContainerHeightAnchor = heightAnchor
         if !Reachability.isConnectedToNetwork() {
             hiddenAds()
@@ -52,7 +53,7 @@ class AdmobBannerAd : UIView, GADBannerViewDelegate{
         }
         
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil {
-            showAds(height: height)
+            showAds(height: heightAnchor.constant)
         } else {
             hiddenAds()
         }

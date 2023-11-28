@@ -33,8 +33,11 @@ class SooskyTestAdsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bannerView.loadingAds(bannerViewHeightAnchor)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bannerView.loadingAds(heightAnchor: bannerViewHeightAnchor, spinColor: .black)
     }
     
     func showPopupConfirmToShowRewardAds(_ title : String, _ subTitle : String){
