@@ -8,7 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
-
+var countIdInterstitialAds = 0
 class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
     public static let sharedInstance = AdmobInterstitialAd()
     override init(){
@@ -16,7 +16,6 @@ class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
     }
     
     private var mInterstitialAd : GADInterstitialAd? = nil
-    private var countTierInterstitialAds = 0
     public var currentVC : UIViewController? = nil
     
     public func loadAds(_ vc : UIViewController){
@@ -26,7 +25,7 @@ class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
        
         self.currentVC = vc
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countTierInterstitialAds], request: request) {[weak self] ads, error in
+        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countIdInterstitialAds], request: request) {[weak self] ads, error in
             guard let `self` = self else {return}
             guard error == nil else {
                 print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
@@ -36,10 +35,10 @@ class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
             self.mInterstitialAd?.fullScreenContentDelegate = self
         }
         
-        if countTierInterstitialAds >= Constants.FULL_ID.count - 1{
-            countTierInterstitialAds = 0
+        if countIdInterstitialAds >= Constants.FULL_ID.count - 1{
+            countIdInterstitialAds = 0
         }else{
-            countTierInterstitialAds += 1
+            countIdInterstitialAds += 1
         }
     }
     
