@@ -169,6 +169,8 @@ extension UIViewController{
         
         let containerView = array[1] as! UIView
         containerView.removeFromSuperview()
+        
+        turnOffAds()
     }
     
     fileprivate func showAdsIfReady(_ timer: Timer, _ array: [Any]) {
