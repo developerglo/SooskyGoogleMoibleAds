@@ -90,6 +90,11 @@ extension UIViewController{
     }
     
     func showPopupLoadingAds(_ pos : ADS_POS, _ isShowAdsWithSub : Bool = false){
+        if !Reachability.isConnectedToNetwork() {
+            turnOffAds()
+            return
+        }
+        
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil && !isShowAdsWithSub{
             turnOffAds()
             return
