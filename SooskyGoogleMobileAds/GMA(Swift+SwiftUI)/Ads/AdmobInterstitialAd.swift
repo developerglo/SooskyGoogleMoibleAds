@@ -19,14 +19,16 @@ class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
     private var countTierInterstitialAds = 0
     public var currentVC : UIViewController? = nil
     
-    public func loadAds(_ vc : UIViewController){
+    public func loadAds(_ vc : UIViewController, _ id : Int? = nil){
         if !Reachability.isConnectedToNetwork() {return}
         if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil {return}
         if mInterstitialAd != nil {return}
        
+        var adsIdShow : Int = id ?? countTierInterstitialAds
+        
         self.currentVC = vc
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[countTierInterstitialAds], request: request) {[weak self] ads, error in
+        GADInterstitialAd.load(withAdUnitID: Constants.FULL_ID[adsIdShow], request: request) {[weak self] ads, error in
             guard let `self` = self else {return}
             guard error == nil else {
                 print("[DEBUG] load ads Full error : \(error?.localizedDescription)")
