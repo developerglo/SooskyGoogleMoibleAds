@@ -8,7 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
-var countIdInterstitialAds = 0
+
 class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
     public static let sharedInstance = AdmobInterstitialAd()
     override init(){
@@ -16,6 +16,7 @@ class AdmobInterstitialAd : NSObject, GADFullScreenContentDelegate{
     }
     
     private var mInterstitialAd : GADInterstitialAd? = nil
+    public var countIdInterstitialAds = 0
     public var currentVC : UIViewController? = nil
     
     public func loadAds(_ vc : UIViewController){

@@ -15,7 +15,7 @@ class AdmobRewardedAd : NSObject, GADFullScreenContentDelegate{
     }
     
     private var mRewardAd : GADRewardedAd? = nil
-    private var countTierRewardAds = 0
+    public var countTierRewardAds = 0
     public var currentVC : UIViewController? = nil
     var isHaveRewarded : Bool = false
     

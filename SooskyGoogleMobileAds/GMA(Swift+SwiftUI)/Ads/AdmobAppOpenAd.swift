@@ -8,7 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
-var countTierOpenAds = 0
+
 var canShowOpenAds : Bool = false
 
 class AdmobAppOpenAd : NSObject, GADFullScreenContentDelegate{
@@ -20,6 +20,7 @@ class AdmobAppOpenAd : NSObject, GADFullScreenContentDelegate{
     private var appOpenAd : GADAppOpenAd? = nil
     private var loadTime = Date()
     public var displayAOA : Int = 0
+    public var countTierOpenAds = 0
     
     func requestAppOpenAd() {
         if !Reachability.isConnectedToNetwork(){return}
