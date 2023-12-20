@@ -20,24 +20,18 @@ class AdmobRewardedInterstitialAd : NSObject, GADFullScreenContentDelegate{
     
     public func loadAds(_ vc : UIViewController){
         if !Reachability.isConnectedToNetwork() {return}
-        if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil {return}
         if mRewardedInterstitial != nil {return}
         self.currentVC = vc
         
-        let storage = UserDefaults.standard
-        if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
-        {
-            if !Reachability.isConnectedToNetwork() {return}
-            let request = GADRequest()
-            GADRewardedInterstitialAd.load(withAdUnitID: Constants.VIDEO_FULL_ID, request: request) {[weak self] ads, error in
-                guard let `self` = self else{return}
-                guard error == nil else {
-                    print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
-                    return
-                }
-                self.mRewardedInterstitial = ads
-                self.mRewardedInterstitial?.fullScreenContentDelegate = self
+        let request = GADRequest()
+        GADRewardedInterstitialAd.load(withAdUnitID: Constants.VIDEO_FULL_ID, request: request) {[weak self] ads, error in
+            guard let `self` = self else{return}
+            guard error == nil else {
+                print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
+                return
             }
+            self.mRewardedInterstitial = ads
+            self.mRewardedInterstitial?.fullScreenContentDelegate = self
         }
     }
     

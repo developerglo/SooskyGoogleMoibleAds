@@ -21,24 +21,18 @@ class AdmobRewardedAd : NSObject, GADFullScreenContentDelegate{
     
     public func loadAds(_ vc : UIViewController){
         if !Reachability.isConnectedToNetwork() {return}
-        if UserDefaults.standard.string(forKey: defaultsKeys.APP_REMOVE_ADS) != nil {return}
         if mRewardAd != nil {return}
         self.currentVC = vc
         
-        let storage = UserDefaults.standard
-        if storage.string(forKey: defaultsKeys.APP_REMOVE_ADS) == nil
-        {
-            if !Reachability.isConnectedToNetwork() {return}
-            let request = GADRequest()
-            GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID[countTierRewardAds], request: request) {[weak self] ads, error in
-                guard let `self` = self else{return}
-                guard error == nil else {
-                    print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
-                    return
-                }
-                self.mRewardAd = ads
-                self.mRewardAd?.fullScreenContentDelegate = self
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: Constants.VIDEO_ID[countTierRewardAds], request: request) {[weak self] ads, error in
+            guard let `self` = self else{return}
+            guard error == nil else {
+                print("[DEBUG] load ads Reward error : \(error?.localizedDescription)")
+                return
             }
+            self.mRewardAd = ads
+            self.mRewardAd?.fullScreenContentDelegate = self
         }
         
         if countTierRewardAds >= Constants.VIDEO_ID.count - 1{
