@@ -40,9 +40,9 @@ struct Constants {
     static let NATIVE_ID     = "ca-app-pub-3940256099942544/2247696110"
     static let OPEN_ID       =
     [
-        "ca-app-pub-3940256099942544/5662855259",
-        "ca-app-pub-3940256099942544/5662855259",
-        "ca-app-pub-3940256099942544/5662855259"
+        "ca-app-pub-3940256099942544/5575463023",
+        "ca-app-pub-3940256099942544/5575463023",
+        "ca-app-pub-3940256099942544/5575463023"
     ]
     static let APP_ID        = "ca-app-pub-3940256099942544~1458002511"
     //*** Ads Real ***
